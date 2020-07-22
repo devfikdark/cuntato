@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--- CSS -->
+  <link rel="stylesheet" href="./css/materialize.min.css">
+  <link rel="stylesheet" href="./css/icon.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    main{
+        display:none
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card center-align hoverable waves-light lighten-1">
+          <div class="card-content black-text big">
+            <span class="card-title">
+              <h5 class="center">
+                <i class="material-icons">cloud_upload</i> 
+                Data Entry Form
+              </h5>
+            </span>
+            <input required type="text" name="Name" id="myName" placeholder="Name: Morol">
+            <input required type="email" name="Email" id="myEmail" placeholder="Email: morol@gmail.com">
+            <input required type="text" name="Message" id="myMessage" placeholder="Message: Welcome to Morol">
+            <input class="btn right" type="button" value="Submit" id="myBtn">
+            <br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--preloader component-->
+  <div class="mainLoader">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+            <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+            <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+            <div class="circle"></div>
+        </div>
+        </div>
+    </div>
+  </div>
+  
+  <main>
+    <div class="customContainer">
+      <div class="row">
+        <h5 class="center">Message List</h5>
+        <div class="col s12 m12">
+          <div id="tableID"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+<!--- JS -->
+<script src="./js/jquery.min.js"></script>
+<script src="./js/materialize.min.js"></script>
+<script src="./js/client.js"></script>
+</body>
+</html>
