@@ -1,16 +1,14 @@
 let express = require('express');
 let route = express.Router();
 let { 
-  getData, 
-  postData, 
   getFromData,
-  postFromData 
+  postFromData,
+  getProjectToken 
 } = require('./../controllers/appController');
 
-route.get('/formtotable', getData);
-route.post('/formtotable', postData);
+route.get('/project-data', getFromData);
+route.post('/project-data', postFromData);
 
-route.get('/savedata',   getFromData);
-route.post('/savedata', postFromData);
+route.get('/get-project-token', getProjectToken);
 
 module.exports = route;

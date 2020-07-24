@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 
-let fromDataSchema = new mongoose.Schema({
+let dataModelSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "provide a name"]
@@ -15,6 +15,6 @@ let fromDataSchema = new mongoose.Schema({
   }
 });
 
-let fromDataModel = mongoose.model('fromData', fromDataSchema);
+let dataModel = mongoose.model('fromData', dataModelSchema);
 
-module.exports = fromDataModel;
+module.exports = dataModel;
