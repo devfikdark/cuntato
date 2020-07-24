@@ -1,5 +1,7 @@
 let fs = require('fs');
 let jsonFile = `${__dirname}/../data/formData.json`;
+let fromDataModel = require('./../model/fromDataModel');
+let catchAsync = require('./../utils/catchAsync');
 
 exports.getData = (req, res, next) => {
   fs.readFile(jsonFile, 'utf-8', (err, data) => {
@@ -21,3 +23,14 @@ exports.postData = (req, res, next) => {
     });
   });
 }
+
+exports.postFromData = catchAsync(async(req, res, next) => {
+  let data = req.body;
+  let createData = await fromDataModel.create(data);
+  res.status(201).json(createData);
+});
+
+exports.getFromData = catchAsync(async(req, res, next) => {
+  let getData = await fromDataModel.find();
+  res.status(201).json(getData);
+});
