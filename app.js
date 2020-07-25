@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const appRouter = require('./router/appRouter');
+const authRouter = require('./router/authRouter');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', appRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (req, res) => {
   res.header('Content-Type', 'text/html');

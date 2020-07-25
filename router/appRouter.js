@@ -9,6 +9,6 @@ let {
 route.get('/project-data', getFromData);
 route.post('/project-data', postFromData);
 
-route.get('/get-project-token', getProjectToken);
+route.post('/get-project-token', getProjectToken);
 
 module.exports = route;

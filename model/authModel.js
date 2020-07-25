@@ -12,9 +12,12 @@ let authModelSchema = new mongoose.Schema({
   picture: {
     type: String,
     required: [true, "provide your profile picture"]
+  },
+  domain: {
+    type: String
   }
 });
 
-let authModel = mongoose.model('userData', authModelSchema);
+let authModel = mongoose.model('authData', authModelSchema);
 
 module.exports = authModel;
