@@ -7,6 +7,7 @@ let authModel = require('./../model/authModel');
 exports.getFromData = catchAsync(async(req, res, next) => {
   let projectToken = req.body.projectID;
   let getData = await dataModel.find({ _project: projectToken });
+  res.setHeader('Content-type', 'application/json');
   if (getData.length > 0) {
     return res.status(200).json({
       status: "ok",
@@ -23,8 +24,11 @@ exports.postFromData = catchAsync(async(req, res, next) => {
   let projectToken = req.body.projectID
   let currentURL = req.protocol + '://' + req.get('host') + req.originalUrl;
   let domainURL = await projectModel.findOne({ _projecttoken: projectToken });
+  if (!domainURL) {
+    return statusMsg(res, 403, "failed", "Project not found !!!");
+  }
   let isTrue = isMatchURL(domainURL._userdomain, currentURL);
-
+  res.setHeader('Content-type', 'application/json');
   if (!isTrue) {
     return statusMsg(res, 401, "failed", "Unauthorize user!!!");
   } else {
@@ -32,14 +36,11 @@ exports.postFromData = catchAsync(async(req, res, next) => {
       data: data,
       _project: projectToken
     }; 
-    console.log(newData)   
     if (isTrue) {
       await dataModel.create(newData);
-      res.setHeader('Content-type', 'application/json');
       return statusMsg(res, 201, "ok", "create success");
     }  
   }
-  res.setHeader('Content-type', 'application/json');
   statusMsg(res, 401, "failed", "Somthing problem here!!!");
 });
 
@@ -54,6 +55,7 @@ exports.getProjectToken = catchAsync(async(req, res, next) => {
   let oldProData = await projectModel.find({ _usertoken: userID });
   // check duplicate project name
   let doubleName = await projectModel.findOne({ _projectname: projectName });  
+  res.setHeader('Content-type', 'application/json');
   if (doubleName) {
     return statusMsg(res, 403, "failed", "Already use this name");
   }
@@ -68,7 +70,6 @@ exports.getProjectToken = catchAsync(async(req, res, next) => {
       _userdomain: domainURL
     }
     let createData = await projectModel.create(newProData);
-    console.log(createData)
     if (createData) {
       return res.status(200).json({
         status: "ok",
