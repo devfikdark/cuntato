@@ -5,8 +5,13 @@ let projectModelSchema = new mongoose.Schema({
     type: String,
     required: [true, "provide your user ID"]
   },
-  _project: {
-    type: String
+  _projecttoken: {
+    type: String,
+    unique: true
+  },
+  _projectname: {
+    type: String,
+    unique: true
   },
   _userdomain: String
 });
