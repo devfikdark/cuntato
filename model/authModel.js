@@ -1,4 +1,4 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 let authModelSchema = new mongoose.Schema({
   name: {
