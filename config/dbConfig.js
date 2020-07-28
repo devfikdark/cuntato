@@ -6,8 +6,8 @@ let cloudDB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-// mongoose.connect(process.env.DATABASE_LOCAL, {
-mongoose.connect(cloudDB, {
+mongoose.connect(process.env.DATABASE_LOCAL, {
+//mongoose.connect(cloudDB, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

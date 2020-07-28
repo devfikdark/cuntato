@@ -6,7 +6,7 @@ $(function () {
     autoTrigger: true,
   });
 
-  $("#copy-btn").click(function () {
+  $(".copy-btn").click(function () {
     var copyText = document.getElementById("project-credential");
     var textArea = document.createElement("textarea");
     textArea.value = copyText.textContent;

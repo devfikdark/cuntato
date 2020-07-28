@@ -1,6 +1,7 @@
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const GithubStrategy = require('passport-github2').Strategy;
 const LinkedinStrategy = require('passport-linkedin-oauth2').Strategy;
+const authModel = require('./../model/authModel');
 
 module.exports = (passport) => {
   // used to serialize the user for the session
@@ -22,10 +23,15 @@ module.exports = (passport) => {
     },
     function(token, refreshToken, profile, cb) {
       let user = {};
-      process.nextTick(() => {
+      process.nextTick(async() => {
         user.name = profile._json.name;
         user.email = profile._json.email;
         user.picture = profile._json.picture;
+        let checkUser = await authModel.findOne({ email: user.email });
+        if (!checkUser) {
+          checkUser = await authModel.create(user);
+        }
+        user.id = checkUser._id;
         return cb(null, user);
       });
     }
@@ -41,10 +47,15 @@ module.exports = (passport) => {
     },
     function(token, refreshToken, profile, cb) {
       let user = {};
-      process.nextTick(() => {
+      process.nextTick(async() => {
         user.name = profile._json.name;
         user.email = profile.emails[0].value;
         user.picture = profile._json.avatar_url
+        let checkUser = await authModel.findOne({ email: user.email });
+        if (!checkUser) {
+          checkUser = await authModel.create(user);
+        }
+        user.id = checkUser._id;
         return cb(null, user);
       });
     }
@@ -60,12 +71,25 @@ module.exports = (passport) => {
     },
     function(token, refreshToken, profile, cb) {
       let user = {};
-      process.nextTick(() => {
+      process.nextTick(async() => {
         user.name = profile.displayName;
         user.email = profile.emails[0].value;
         user.picture = profile.photos[3].value;
+        let checkUser = await authModel.findOne({ email: user.email });
+        if (!checkUser) {
+          checkUser = await authModel.create(user);
+        }
+        user.id = checkUser._id;
         return cb(null, user);
       });
     }
   ));
 };
+
+function checkAuthUser (user) {
+  let checkUser =  authModel.findOne({ email: user.email });
+  if (!checkUser) {
+    checkUser =  authModel.create(user);
+  }
+  return checkUser;
+}

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel='shortcut icon' type='image/x-icon' href='./img/favicon.ico' />
     <title>Profile</title>
     <link
       rel="stylesheet"
@@ -68,18 +69,9 @@
             </a>
           </div>
         </div>
+        <span id=<%= user.id %> ></span>
         <div class="row">
-          <div class="col s12 m3 l3">
-            <div class="card rounded project-card">
-              <div class="card-content">
-                <h5 class="truncate">
-                  <a href="/project" class="project-link">TeamTigers</a>
-                </h5>
-                <span id="project-credential">iowjfksdflk3903</span>
-                <i class="material-icons right" id="copy-btn">content_copy</i>
-              </div>
-            </div>
-          </div>
+          <div id="projectList"></div>
         </div>
       </div>
 
@@ -97,7 +89,7 @@
               <label for="first_name">Project Name</label>
             </div>
             <div class="col s6">
-              <a href="" class="btn modal-btn">Create</a>
+              <a id="createID" class="btn modal-btn">Create</a>
             </div>
           </div>
         </div>
@@ -111,6 +103,7 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/materialize.min.js"></script>
     <!-- Custom JS -->
+    <script src="./js/clientProfileController.js"></script>
     <script src="./js/app.js"></script>
   </body>
 </html>
