@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <!-- Testing 
+    <link rel="stylesheet" href="./css/materialize.min.css">-->
+    <link
+      rel="stylesheet"
+      href="https://teamtigers.github.io/assets/css/materializecss.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Google+Sans"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="navbar-fixed">
+        <nav class="white z-depth-0">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo hide-on-small-only">Contato</a>
+            <ul id="nav-mobile" class="right">
+              <li>
+                <img
+                  src="./img/avatar.png"
+                  alt="avatar"
+                  id="avatar"
+                  class="responsive-img circle dropdown-trigger"
+                  data-target="dropdown1"
+                />
+              </li>
+            </ul>
+            <ul id="dropdown1" class="dropdown-content">
+              <li><a href="/profile">Zubayer Himel</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li>
+                <a href="/">Sign Out</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="small-div"></div>
+      <div class="container">
+        <h4 class="white-text">Your projects</h4>
+        <div class="row">
+          <div class="col s12 m6 l4">
+            <a href="#add-project" class="add-card modal-trigger">
+              <div class="card-panel rounded center-align">
+                <i class="material-icons center add-icon">add</i>
+                <h5>
+                  Add project
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 m3 l3">
+            <div class="card rounded project-card">
+              <div class="card-content">
+                <h5 class="truncate">
+                  <a href="/project" class="project-link">TeamTigers</a>
+                </h5>
+                <span id="project-credential">iowjfksdflk3903</span>
+                <i class="material-icons right" id="copy-btn">content_copy</i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL -->
+      <div id="add-project" class="modal rounded">
+        <div class="modal-content">
+          <div class="row">
+            <div class="input-field col s6">
+              <input
+                id="first_name"
+                type="text"
+                class="validate"
+                autocomplete="off"
+              />
+              <label for="first_name">Project Name</label>
+            </div>
+            <div class="col s6">
+              <a href="" class="btn modal-btn">Create</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- jQuery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Materialize js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+    <!--Testing
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/materialize.min.js"></script>-->
+    <!-- Custom JS -->
+    <script src="./js/app.js"></script>
+  </body>
+</html>

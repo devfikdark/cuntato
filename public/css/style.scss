@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+$green: #045c0c;
+$white-green: #f3f3f3;
+$black: #141c14;
+$purple: #7b22d6;
 body {
-  background-color: #f3f3f3;
-  color: #141c14;
+  background-color: $white-green;
+  color: $black;
   font-family: "Roboto";
 }
-
 h1,
 h2,
 h3,
@@ -13,51 +16,45 @@ h4,
 h5,
 h6 {
   font-family: "Google Sans";
-  color: #045c0c;
+  color: $green;
 }
-
 nav {
   height: 3.5rem;
   padding: 0;
   top: 0;
   margin: 0;
-}
 
-nav .btn {
-  margin: 0.5rem 1rem;
-  font-weight: 600;
-}
+  .btn {
+    margin: 0.5rem 1rem;
+    font-weight: 600;
+  }
+  #avatar {
+    max-height: 40px;
+    max-width: 40px;
+    margin: 0.5rem 1rem;
+  }
 
-nav #avatar {
-  max-height: 40px;
-  max-width: 40px;
-  margin: 0.5rem 1rem;
+  .brand-logo {
+    margin: -0.5rem 1rem;
+    font-family: "Righteous", cursive;
+    color: $green;
+  }
 }
-
-nav .brand-logo {
-  margin: -0.5rem 1rem;
-  font-family: "Righteous", cursive;
-  color: #045c0c;
-}
-
 .section {
   height: 90vh;
 }
-
 .dropdown-content {
   border-radius: 5px;
 }
-
 .small-div {
   position: absolute;
   width: 100vw;
   height: 28vh;
   margin: 0 auto;
   top: 0;
-  background-color: #045c0c;
+  background-color: $green;
   z-index: -1;
 }
-
 .s1 {
   position: absolute;
   height: 90%;
@@ -66,39 +63,40 @@ nav .brand-logo {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #045c0c;
+  background-color: $green;
   z-index: -1;
 }
+#home {
+  h1 {
+    margin-top: 20%;
+  }
+  .btn {
+    height: 3rem;
+    width: 12rem;
+    line-height: 3.4;
 
-#home h1 {
-  margin-top: 20%;
+    &:hover {
+      background-color: $green !important;
+      color: $white-green !important;
+    }
+  }
 }
-
-#home .btn {
-  height: 3rem;
-  width: 12rem;
-  line-height: 3.4;
-}
-
-#home .btn:hover {
-  background-color: #045c0c !important;
-  color: #f3f3f3 !important;
-}
-
-#dropdown1 a {
-  color: #141c14 !important;
+#dropdown1 {
+  a {
+    color: $black !important;
+  }
 }
 
 .btn {
   background-color: #fff !important;
-  color: #045c0c !important;
+  color: $green !important;
   font-family: "Google Sans";
   text-transform: none;
   border-radius: 5px;
-}
 
-.btn img {
-  vertical-align: middle;
+  img {
+    vertical-align: middle;
+  }
 }
 
 .custom-btn {
@@ -112,51 +110,42 @@ nav .brand-logo {
 .modal-btn {
   margin-top: 1.8rem;
 }
-
 .modal-content {
   vertical-align: middle;
 }
-
 .google-img {
   padding: 10px;
 }
-
 .modal {
   width: 40%;
   height: 40%;
 }
-
 .rounded {
   border-radius: 10px;
 }
-
 .card-panel {
   background-color: #fff;
-  color: #045c0c;
-}
+  color: $green;
 
-.card-panel:hover {
-  background-color: #f3f3f3;
+  &:hover {
+    background-color: $white-green;
+  }
 }
-
 .project-card {
-  color: #141c14 !important;
-}
+  color: $black !important;
+  h5 {
+    margin-top: 0;
+  }
+  i {
+    cursor: pointer;
+  }
+  .project-link {
+    color: $green;
 
-.project-card h5 {
-  margin-top: 0;
-}
-
-.project-card i {
-  cursor: pointer;
-}
-
-.project-card .project-link {
-  color: #045c0c;
-}
-
-.project-card .project-link:hover {
-  text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .add-icon {
@@ -165,27 +154,28 @@ nav .brand-logo {
 
 .pagination > li > a {
   background-color: white;
-  color: #045c0c;
+
+  color: $green;
 }
 
 .pagination > li > a:focus,
 .pagination > li > a:hover,
 .pagination > li > span:focus,
 .pagination > li > span:hover {
-  color: #045c0c;
+  color: $green;
   background-color: #eee;
   border-color: #ddd;
 }
 
 .pagination > .active > a {
   color: white;
-  background-color: #045c0c !important;
-  border: solid 1px #045c0c !important;
+  background-color: $green !important;
+  border: solid 1px $green !important;
 }
 
 .pagination > .active > a:hover {
-  background-color: #f3f3f3 !important;
-  border: solid 1px #045c0c;
+  background-color: $white-green !important;
+  border: solid 1px $green;
 }
 
 @media only screen and (max-width: 600px) {
@@ -210,11 +200,10 @@ nav .brand-logo {
     height: 30vh;
     margin: 0 auto;
     top: 0;
-    background-color: #045c0c;
+    background-color: $green;
     z-index: -1;
   }
   .project-btn {
     padding: 0;
   }
 }
-/*# sourceMappingURL=style.css.map */

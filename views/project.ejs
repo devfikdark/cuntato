@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project</title>
+    <!-- Testing 
+    <link rel="stylesheet" href="./css/materialize.min.css">-->
+    <link
+      rel="stylesheet"
+      href="https://teamtigers.github.io/assets/css/materializecss.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Google+Sans"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="navbar-fixed">
+        <nav class="white z-depth-0">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo hide-on-small-only">Contato</a>
+            <ul id="nav-mobile" class="right">
+              <li>
+                <img
+                  src="./img/avatar.png"
+                  alt="avatar"
+                  id="avatar"
+                  class="responsive-img circle dropdown-trigger"
+                  data-target="dropdown1"
+                />
+              </li>
+            </ul>
+            <ul id="dropdown1" class="dropdown-content">
+              <li><a href="/profile">Zubayer Himel</a></li>
+              <li class="divider" tabindex="-1"></li>
+              <li>
+                <a href="/">Sign Out</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="small-div"></div>
+      <div class="left-align">
+        <a href="/profile" class="btn-flat white-text"
+          ><i class="material-icons left">arrow_back</i>Go back</a
+        >
+      </div>
+      <div class="center-align white-text">
+        <span>project Name</span>
+        <h3 class="white-text">TeamTigers</h3>
+      </div>
+      <br />
+      <div class="container">
+        <div class="col s12">
+          <div class="row">
+            <div class="card rounded">
+              <div class="card-content">
+                <div class="right">
+                  <a href="#" class="btn table-btn"
+                    ><i class="material-icons left">content_copy</i>Copy
+                    table</a
+                  >
+                  <a href="#" class="btn table-btn"
+                    ><i class="material-icons left">arrow_downward</i>.pdf</a
+                  >
+                  <a href="#" class="btn table-btn"
+                    ><i class="material-icons left">arrow_downward</i>.csv</a
+                  >
+                  <a href="#" class="btn table-btn"
+                    ><i class="material-icons left">arrow_downward</i>.xlsx</a
+                  >
+                </div>
+                <table class="centered striped" id="my-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Message</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Alvin</td>
+                      <td>Eclair</td>
+                      <td>
+                        Lorem ipsum dolor sit amet.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Alan</td>
+                      <td>Jellybean</td>
+                      <td>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Qui, dicta.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Jonathan</td>
+                      <td>Lollipop</td>
+                      <td>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Deserunt, asperiores!
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="right-align">
+                  <ul class="pagination blue-text">
+                    <li class="disabled">
+                      <a href="#!"
+                        ><i class="material-icons">chevron_left</i></a
+                      >
+                    </li>
+                    <li class="active"><a href="#!">1</a></li>
+                    <li class="waves-effect"><a href="#!">2</a></li>
+                    <li class="waves-effect"><a href="#!">3</a></li>
+                    <li class="waves-effect"><a href="#!">4</a></li>
+                    <li class="waves-effect"><a href="#!">5</a></li>
+                    <li class="waves-effect">
+                      <a href="#!"
+                        ><i class="material-icons">chevron_right</i></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- jQuery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Materialize js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+    <!--Testing
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/materialize.min.js"></script>-->
+    <!-- Custom JS -->
+    <script src="./js/app.js"></script>
+  </body>
+</html>

@@ -1,73 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!--- CSS -->
-  <link rel="stylesheet" href="./css/materialize.min.css">
-  <link rel="stylesheet" href="./css/icon.css">
-  <link rel="stylesheet" href="./css/style.css">
-  <style>
-    main{
-        display:none
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col s12 m12">
-        <div class="card center-align hoverable waves-light lighten-1">
-          <div class="card-content black-text big">
-            <span class="card-title">
-              <h5 class="center">
-                <i class="material-icons">cloud_upload</i> 
-                Data Entry Form
-              </h5>
-            </span>
-            <input required type="text" name="Name" id="myName" placeholder="Name: Morol">
-            <input required type="email" name="Email" id="myEmail" placeholder="Email: morol@gmail.com">
-            <input required type="text" name="Message" id="myMessage" placeholder="Message: Welcome to Morol">
-            <input class="btn right" type="button" value="Submit" id="myBtn">
-            <br><br>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Easy Contact</title>
+    <!-- Testing 
+    <link rel="stylesheet" href="./css/materialize.min.css">-->
+    <link
+      rel="stylesheet"
+      href="https://teamtigers.github.io/assets/css/materializecss.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Google+Sans"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="navbar-fixed">
+        <nav class="white">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo hide-on-small-only">Contato</a>
+
+            <a href="#modal1" class="btn modal-trigger right"
+              >Get started for free</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="section">
+          <div class="row">
+            <div class="col s12 m6 l6">
+              <h1>CONTATO</h1>
+              <p class="flow-text">
+                No more showcasing non-functional contact form in static
+                websites. Give life to your static website's contact form by
+                adding the back-end code which really works!
+              </p>
+              <a href="#modal1" class="btn modal-trigger custom-btn"
+                >Get started</a
+              >
+            </div>
+            <div class="col s12 m6 l6">
+              <img
+                src="./img/svg/bannersvg.svg"
+                alt="bannersvg"
+                class="responsive-img"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="row">
+            <div class="col s12 m12 l6">
+              <h3>Easy Authentication</h3>
+              <p class="flow-text">
+                You don't need to create any account in our site. To get started
+                you need to authenticate via Google or Github or LinkedIn.
+              </p>
+            </div>
+            <div class="col s12 m12 l6">
+              <img
+                src="./img/svg/authenticationsvg.svg"
+                alt="authentication"
+                class="responsive-img"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="row">
+            <div class="col s12 m12 l6">
+              <h3>Setup</h3>
+              <p class="flow-text">
+                After authentication you'll be redirected to your profile page
+                where you will create a project for a single contact form.
+                You'll be given required credentials after creating the project.
+              </p>
+            </div>
+            <div class="col s12 m12 l6">
+              <img
+                src="./img/svg/setupsvg.svg"
+                alt="setup"
+                class="responsive-img"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="row">
+            <div class="col s12 m12 l6">
+              <h3>Get messages</h3>
+              <p class="flow-text">
+                Use the required credentials provided after creating project in
+                your site's script and BOOM!!! You are good to go.
+              </p>
+            </div>
+            <div class="col s12 m12 l6">
+              <img
+                src="./img/svg/setupsvg1.svg"
+                alt="done"
+                class="responsive-img"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- MODAL -->
+        <div id="modal1" class="modal center rounded">
+          <div class="modal-content">
+            <p>
+              <a href="/profile" class="btn"
+                ><img
+                  src="https://img.icons8.com/color/24/000000/google-logo.png"
+                  alt="google"
+                />
+                Sign In with Google</a
+              >
+            </p>
+
+            <p>
+              <a href="" class="btn"
+                ><img
+                  src="https://img.icons8.com/fluent/24/000000/github.png"
+                  alt="github"
+                />
+                Sign In with Github</a
+              >
+            </p>
+            <p>
+              <a href="" class="btn"
+                ><img
+                  src="https://img.icons8.com/color/24/000000/linkedin.png"
+                />Sign In with Linked In</a
+              >
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </main>
 
-  <!--preloader component-->
-  <div class="mainLoader">
-    <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue-only">
-        <div class="circle-clipper left">
-            <div class="circle"></div>
-        </div>
-        <div class="gap-patch">
-            <div class="circle"></div>
-        </div>
-        <div class="circle-clipper right">
-            <div class="circle"></div>
-        </div>
-        </div>
-    </div>
-  </div>
+    <!-- jQuery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Materialize js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
-  <main>
-    <div class="customContainer">
-      <div class="row">
-        <h5 class="center">Message List</h5>
-        <div class="col s12 m12">
-          <div id="tableID"></div>
-        </div>
-      </div>
-    </div>
-  </main>
-  
-<!--- JS -->
-<script src="./js/jquery.min.js"></script>
-<script src="./js/materialize.min.js"></script>
-<script src="./js/client.js"></script>
-</body>
+    <!--Testing
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/materialize.min.js"></script>-->
+    <!-- Custom JS -->
+    <script src="./js/app.js"></script>
+  </body>
 </html>
