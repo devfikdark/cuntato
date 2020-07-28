@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile</title>
-    <!-- Testing 
-    <link rel="stylesheet" href="./css/materialize.min.css">-->
     <link
       rel="stylesheet"
       href="https://teamtigers.github.io/assets/css/materializecss.min.css"
     />
+    <link rel="stylesheet" href="./css/materialize.min.css">
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -29,11 +28,11 @@
       <div class="navbar-fixed">
         <nav class="white z-depth-0">
           <div class="nav-wrapper">
-            <a href="#" class="brand-logo hide-on-small-only">Contato</a>
+            <a href="#" class="brand-logo hide-on-small-only">Cuntato</a>
             <ul id="nav-mobile" class="right">
               <li>
                 <img
-                  src="./img/avatar.png"
+                  src= <%= user.picture %>
                   alt="avatar"
                   id="avatar"
                   class="responsive-img circle dropdown-trigger"
@@ -42,10 +41,10 @@
               </li>
             </ul>
             <ul id="dropdown1" class="dropdown-content">
-              <li><a href="/profile">Zubayer Himel</a></li>
+              <li><a href="/profile"><%= user.name %></a></li>
               <li class="divider" tabindex="-1"></li>
               <li>
-                <a href="/">Sign Out</a>
+                <a href="/logout">Sign Out</a>
               </li>
             </ul>
           </div>
@@ -69,7 +68,6 @@
             </a>
           </div>
         </div>
-
         <div class="row">
           <div class="col s12 m3 l3">
             <div class="card rounded project-card">
@@ -110,9 +108,8 @@
     <!-- Materialize js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
-    <!--Testing
     <script src="./js/jquery.min.js"></script>
-    <script src="./js/materialize.min.js"></script>-->
+    <script src="./js/materialize.min.js"></script>
     <!-- Custom JS -->
     <script src="./js/app.js"></script>
   </body>
