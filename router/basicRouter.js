@@ -12,6 +12,8 @@ module.exports = (app) => {
   });
   
   app.get('/project', isLoggedIn, (req, res) => {
+    req.user.projectName = req.query.projectName;
+    req.user.projectToken = req.query.projectToken;
     res.header('Content-Type', 'text/html');
     res.render('project', {
       user: req.user

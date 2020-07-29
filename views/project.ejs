@@ -54,6 +54,7 @@
     </header>
 
     <main>
+      <span id=<%= user.projectToken %> ></span>
       <div class="small-div"></div>
       <div class="left-align">
         <a href="/profile" class="btn-flat white-text"
@@ -62,7 +63,7 @@
       </div>
       <div class="center-align white-text">
         <span>project Name</span>
-        <h3 class="white-text">TeamTigers</h3>
+        <h3 class="white-text"><%= user.projectName %></h3>
       </div>
       <br />
       <div class="container">
@@ -85,41 +86,7 @@
                     ><i class="material-icons left">arrow_downward</i>.xlsx</a
                   >
                 </div>
-                <table class="centered striped" id="my-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Message</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>Alvin</td>
-                      <td>Eclair</td>
-                      <td>
-                        Lorem ipsum dolor sit amet.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Alan</td>
-                      <td>Jellybean</td>
-                      <td>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Qui, dicta.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Jonathan</td>
-                      <td>Lollipop</td>
-                      <td>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Deserunt, asperiores!
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div id="proTableID"></div>
                 <div class="right-align">
                   <ul class="pagination blue-text">
                     <li class="disabled">
@@ -155,5 +122,7 @@
     <script src="./js/materialize.min.js"></script>
     <!-- Custom JS -->
     <script src="./js/app.js"></script>
+    <script src="./js/clientProjectController.js"></script>
+
   </body>
 </html>
