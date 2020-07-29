@@ -9,6 +9,7 @@ function getProjectData(projectToken) {
   $.get(url, function() {})
     .done((res) => {
       generateTable(res.getData);
+      downloadData();
       console.log(res);
       showToast("Data load success...", "green darken-3");
     })
@@ -24,10 +25,23 @@ function generateTable(dataArray) {
     for (let i = dataArray.length - 1; i >= 0 ; i--) {
       str += "<tr><td>"+ dataArray[i].data.name +"</td>";
       str += "<td>"+ dataArray[i].data.email +"</td>";
-      str += "<td>"+ dataArray[i].data.message +"</td></tr>";
+      str += "<td>"+ dataArray[i].data.message +"</td>";
+      str += "<td>"+ dataArray[i].data.createAt +"</td></tr>";
     }
     str += " </tbody></table>";
   $("#proTableID").html(str);  
+}
+
+function downloadData() {
+  $('#example').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        'copyHtml5',
+        'excelHtml5',
+        'csvHtml5',
+        'pdfHtml5'
+    ]
+  });
 }
 
 /*** Show Toast ***/

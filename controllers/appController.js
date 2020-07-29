@@ -23,17 +23,19 @@ exports.getFromData = catchAsync(async(req, res, next) => {
 exports.postFromData = catchAsync(async(req, res, next) => {
   let data = req.body.data;
     data = JSON.parse(data);
+    data.createAt = Date.now();
   let projectToken = req.body.projectID
   let currentURL = req.body.currentURL;
   let domainURL = await projectModel.findOne({ _projecttoken: projectToken });
   
   res.setHeader('Content-type', 'application/json');
+  /*
   if (!domainURL) {
     resMsg(res, 200, "failed", "Project not found !!!");
     return
   }
-  let isTrue = isMatchURL(domainURL._userdomain, currentURL);
-  isTrue = true; // testing purpose
+  let isTrue = isMatchURL(domainURL._userdomain, currentURL);*/
+  let isTrue = true; // testing purpose
   if (!isTrue) {
     resMsg(res, 200, "failed", "Unauthorize user!!!");
     return
