@@ -1,6 +1,10 @@
 module.exports = (app) => {
   app.get('/', (req, res) => {
     res.header('Content-Type', 'text/html');
+    if (req.isAuthenticated()) {
+      res.redirect('/profile');
+      return;
+    }
     res.render('index');
   });
   
