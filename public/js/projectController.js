@@ -6,10 +6,12 @@ $(function() {
 });
 
 function getProjectDomain(projectToken) {
+  console.log(projectToken)
   let url = "https://cuntato.herokuapp.com/api/get-project-domain?projectToken=";
     url += projectToken;
   $.get(url, function() {})
     .done((res) => {
+      console.log(res)
       let str = res.data;
       $("#domain").val(str);
     })

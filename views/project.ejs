@@ -97,7 +97,6 @@
                   class="validate"
                   validate
                 />
-                <label for="domain">Domain name</label>
                 <a href="#check" class="btn modal-trigger">Edit domain</a>
               </div>
             </div>
@@ -153,15 +152,14 @@
           </div>
 
           <div class="col s12" id="message">
-            <!-- IF MESSAGE FOUND THEN RENDER BELOW SECTION -->
             <div class="card rounded">
               <div class="card-content">
+                <!-- IF MESSAGE FOUND THEN RENDER BELOW SECTION -->
                 <div id="proTableID"></div>
+                <!-- IF MESSAGE NOT FOUND THEN RENDER BELOW SECTION -->
+                <div id="nothingData"></div>
               </div>
-            </div>
-
-            <!-- IF MESSAGE NOT FOUND THEN RENDER BELOW SECTION -->
-            <div id="nothingData"></div>
+            </div>            
           </div>
         </div>
       </div>
@@ -183,12 +181,12 @@
 
       <div id="check" class="modal">
         <div class="modal-content center-align">
-          <h4 class="red-text text-lighten-1">
+          <h6 class="red-text text-lighten-1">
             Your domain name will be changed. Are you sure?
-          </h4>
+          </h6>
           <div class="domain-name-changed-btn">
-            <a href="" id="yesChange" class="btn domain-change">Yes, change</a>
-            <a href="" id="noChange" class="btn domain-not-change">Cancel</a>
+            <a id="yesChange" class="btn domain-change">Yes, change</a>
+            <a id="noChange" class="btn domain-not-change">Cancel</a>
           </div>
         </div>
       </div>

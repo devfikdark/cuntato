@@ -122,7 +122,7 @@ exports.getProjectCount = catchAsync(async(req, res, next) => {
 
 exports.getProjectDomain = catchAsync(async(req, res, next) => {
   let projectToken = req.query.projectToken;
-  let data = await projectModel.find({ _projecttoken: projectToken });
+  let data = await projectModel.findOne({ _projecttoken: projectToken });
   res.setHeader('Content-type', 'application/json');
   resData(res, 200, "ok", data._userdomain);
   return;

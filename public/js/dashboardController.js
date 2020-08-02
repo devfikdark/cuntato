@@ -11,7 +11,7 @@ function getUserProjects(userID) {
     .done((res) => {
       let str = "";
       res = res.data
-      if (res.length !== undefined) {
+      if (res !== undefined) {
         for (let i = res.length - 1; i >= 0; i--) {
           let path = "/project?projectName=" + res[i]._projectname;
             path += "&projectToken=" + res[i]._projecttoken ;
