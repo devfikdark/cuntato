@@ -20,16 +20,33 @@ function getUserProjects(userID) {
           str += "<div class='card-content'> <h5 class='truncate'>"
           str += "<a id='"+ res[i]._projecttoken +"' href='"+ path +"' "
           str += "class='project-link'>"+ res[i]._projectname +"</a>"
-          str += "</h5> <span id='project-credential'>"+ res[i]._projecttoken +"</span>"
-          str += " <i class='material-icons right copy-btn'>content_copy</i>"
+          str += "</h5> <span id='copyId"+ i +"'>"+ res[i]._projecttoken +"</span>"
+          str += " <i id='Id"+ i +"' class='material-icons right "
+          str += "copy-btn'>content_copy</i>"
           str += "</div></div></div>"
         }
         $("#projectList").html(str);
+        copyToClipboard();
       }
     })
     .fail(() => {
       showToast("Problem Load projects!!!", "red darken-3");
     })  
+}
+
+function copyToClipboard() {
+  $(".copy-btn").click(function () {
+    let copyText = $('#copy' + this.id).text();
+    let input = document.createElement('input');
+    input.value = copyText;
+    console.log(this.id, copyText)
+
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    showToast("Copied " + copyText, "deep-purple darken-4");
+    document.body.removeChild(input);
+  });
 }
 
 function createProject(userID) {
