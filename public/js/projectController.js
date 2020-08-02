@@ -1,6 +1,7 @@
 $(function() {
   let projectToken = $("span").attr("id");
   getProjectDomain(projectToken);
+  setProjectRelatedCode(projectToken);
   getProjectData(projectToken);
   updateDomainURL(projectToken);
 });
@@ -20,6 +21,32 @@ function getProjectDomain(projectToken) {
     })
 }
 
+function setProjectRelatedCode(projectToken) {
+  // HTML
+  $("#codeHTML1").text("<input type='text' name='name' id='dataName'>");
+  $("#codeHTML2").text("<input type='email' name='email' id='dataEmail'>");
+  $("#codeHTML3").text("<input type='text' name='message' id='dataMessage'>");
+  $("#codeHTML4").text("<input type='button' value='Send' id='btnSend'>");
+
+  // jQuery
+  let strjQuery = "$('#btnSend').click(function() {<br>";
+    strjQuery += "let url = 'https://cuntato.herokuapp.com/api/project-data';<br>";
+    strjQuery += "let data = {<br>";
+    strjQuery += "'name': $('#dataName').val(),<br>";
+    strjQuery += "'email': $('#dataEmail').val(),<br>";
+    strjQuery += "'message': $('#dataMessage').val()<br>};<br>";
+    strjQuery += "data = JSON.stringify(data);<br>";
+    strjQuery += "let projectID = '"+ projectToken +"';<br>";
+    strjQuery += "let currentURL = window.location.href;<br>";
+    strjQuery += "$.post(url, { data , projectID: projectID, currentURL: currentURL }, function() {})<br>";
+    strjQuery += ".done((res) => {<br>"
+    strjQuery += "console.log('Send success ...');<br>"
+    strjQuery += "})<br>.fail(() => {<br>"
+    strjQuery += "console.log('Somthing wrong !!!')<br>"
+    strjQuery += "})<br>});<br>"
+  $("#codejQuery").html(strjQuery); 
+};
+        
 function getProjectData(projectToken) {
   let url = "https://cuntato.herokuapp.com/api/project-data?project=";
     url += projectToken;

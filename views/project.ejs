@@ -52,7 +52,7 @@
               <li><a href="/profile"><%= user.name %></a></li>
               <li><a href="/dashboard">Dashboard</a></li>
               <li class="divider" tabindex="-1"></li>
-              <li><a href="/">Sign Out</a></li>
+              <li><a href="/logout">Sign Out</a></li>
             </ul>
           </div>
         </nav>
@@ -113,34 +113,17 @@
                         <div class="col s12">
                           <h5>HTML</h5>
                           <code id="html">
-                            $("#copy-btn").click(function () { var copyText =
-                            document.getElementById("project-credential"); var
-                            textArea = document.createElement("textarea");
-                            textArea.value = copyText.textContent;
-                            document.body.appendChild(textArea);
-                            textArea.select(); document.execCommand("Copy");
-                            textArea.remove(); showMessage("Code copied to
-                            clipboard"); });
+                            <div id="codeHTML1"></div>
+                            <div id="codeHTML2"></div>
+                            <div id="codeHTML3"></div>
+                            <div id="codeHTML4"></div>
                           </code>
                         </div>
                         <div class="col s12">
                           <!-- <div class="vr hide-on-med-and-down"></div> -->
                           <h5>Script</h5>
                           <code id="jquery">
-                            $(function () { let url =
-                            "https://cuntato.herokuapp.com/api/project-data";
-                            let data = { name: "sdjlkfj com", email:
-                            "datacom@gmail.com", message: "Hello, I have reached
-                            you through your personal website. Can you please
-                            help me to make a project? I'll give you $100.
-                            please let me know what do you think.", }; data =
-                            JSON.stringify(data); let projectID = "ghe05u8xkh";
-                            let currentURL = window.location.href; // like this
-                            http://localhost:5500/test.html" $.post( url, {
-                            data, projectID: projectID, currentURL: currentURL
-                            }, function () {} ) .done((res) => {
-                            console.log(res); }) .fail(() => {
-                            console.log("somthing wrong"); }); });
+                            <div id="codejQuery"></div>
                           </code>
                         </div>
                       </div>
