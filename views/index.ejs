@@ -30,10 +30,12 @@
       <div class="navbar-fixed">
         <nav class="white">
           <div class="nav-wrapper">
-            <a href="#" class="brand-logo hide-on-small-only">Cuntato</a>
+            <a href="/" class="brand-logo hide-on-small-only"
+              >Cuntato
+            </a>
 
-            <a href="#modal1" class="btn modal-trigger right"
-              >Get started for free</a
+            <a href="#modal1" class="btn btn-flat modal-trigger right"
+              >Sign In</a
             >
           </div>
         </nav>
@@ -41,10 +43,11 @@
     </header>
 
     <main>
+      <div class="bg"></div>
       <div class="container">
         <div class="section">
           <div class="row">
-            <div class="col s12 m6 l6">
+            <div class="col s12 m6 l6 banner-text">
               <h1>CUNTATO</h1>
               <p class="flow-text">
                 No more showcasing non-functional contact form in static
@@ -57,7 +60,7 @@
             </div>
             <div class="col s12 m6 l6">
               <img
-                src="./img/svg/bannersvg.svg"
+                src="./img/svg/banner.svg"
                 alt="bannersvg"
                 class="responsive-img"
               />
@@ -127,9 +130,10 @@
         <div id="modal1" class="modal center rounded">
           <div class="modal-content">
             <p>
-              <a href="/auth/google" class="btn"
+              <a href="/auth/google" class="btn auth-btn"
                 ><img
                   src="https://img.icons8.com/color/24/000000/google-logo.png"
+                  class="left"
                   alt="google"
                 />
                 Sign In with Google</a
@@ -137,18 +141,20 @@
             </p>
 
             <p>
-              <a href="/auth/github" class="btn"
+              <a href="/auth/github" class="btn auth-btn"
                 ><img
                   src="https://img.icons8.com/fluent/24/000000/github.png"
+                  class="left"
                   alt="github"
                 />
                 Sign In with Github</a
               >
             </p>
             <p>
-              <a href="/auth/linkedin" class="btn"
+              <a href="/auth/linkedin" class="btn auth-btn"
                 ><img
                   src="https://img.icons8.com/color/24/000000/linkedin.png"
+                  class="left"
                 />Sign In with Linked In</a
               >
             </p>
@@ -157,14 +163,63 @@
       </div>
     </main>
 
-    <!-- jQuery cdn -->
-    <script 
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    </script>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Cuntato</h5>
+            <p class="grey-text text-lighten-4">
+              An easy solution to add functionality in contact form for static
+              sites.
+            </p>
+            <p class="grey-text text-lighten-4">
+              If you find any issue related to the application or have any
+              suggestions please let us know by crating an issue in
+              <a href="https://github.com/pro-js/cuntato" target="_blank"
+                >github</a
+              >
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Our other works</h5>
+            <ul>
+              <li>
+                <a
+                  class="grey-text text-lighten-3"
+                  href="https://teamtigers.github.io/coronainfobd"
+                  target="_blank"
+                  >ConronaInfoBD</a
+                >
+              </li>
+              <li>
+                <a
+                  class="grey-text text-lighten-3"
+                  href="https://github.com/teamtigers/donate_plasma"
+                  target="_blank"
+                  >Donate Plasma</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2020 Copyright TeamTigers
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://teamtigers.github.io"
+            target="_blank"
+            >TeamTigers</a
+          >
+        </div>
+      </div>
+    </footer>
+
+     <!-- jQuery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Materialize js cdn -->
-    <script 
-      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Custom JS -->
     <script src="./js/app.js"></script>
   </body>

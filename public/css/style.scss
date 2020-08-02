@@ -4,10 +4,17 @@ $green: #045c0c;
 $white-green: #f3f3f3;
 $black: #141c14;
 $purple: #7b22d6;
+
 body {
   background-color: $white-green;
   color: $black;
   font-family: "Roboto";
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
 }
 h1,
 h2,
@@ -25,8 +32,15 @@ nav {
   margin: 0;
 
   .btn {
+    background-color: #fff !important;
+    color: $green !important;
     margin: 0.5rem 1rem;
     font-weight: 600;
+    border: none;
+
+    &:hover {
+      background-color: #045c0b21 !important;
+    }
   }
   #avatar {
     max-height: 40px;
@@ -87,39 +101,97 @@ nav {
   }
 }
 
+.banner-text {
+  margin-top: 4em;
+}
+
 .btn {
-  background-color: #fff !important;
-  color: $green !important;
+  background-color: $green !important;
+  color: #fff !important;
   font-family: "Google Sans";
   text-transform: none;
   border-radius: 5px;
+  border: 1px solid $green;
+}
+
+.auth-btn {
+  height: 3rem;
+  width: 40%;
+  line-height: 3;
+  background-color: #fff !important;
+  color: $black !important;
+  border: 1px solid $black;
+
+  &:hover {
+    background-color: $black !important;
+    color: #fff !important;
+  }
 
   img {
-    vertical-align: middle;
+    margin-top: 0.6rem;
   }
 }
 
 .custom-btn {
+  background-color: $green !important;
+  color: #fff !important;
   height: 4rem;
   width: 16rem;
   font-size: 1.5rem;
   line-height: 2.5;
   border-radius: 10px;
+
+  &:hover {
+    background-color: #fff !important;
+    color: $green !important;
+  }
 }
 
-.modal-btn {
-  margin-top: 1.8rem;
+.project-banner {
+  margin-top: 2em;
+  margin-bottom: 4em;
 }
-.modal-content {
-  vertical-align: middle;
+
+.tabs {
+  margin-top: 1.5em;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  background: transparent;
 }
-.google-img {
-  padding: 10px;
+
+.tabs {
+  .tab {
+    a {
+      color: #045c0b75 !important;
+      background: transparent;
+      text-transform: none;
+    }
+  }
+  margin-bottom: 3em;
 }
-.modal {
-  width: 40%;
-  height: 40%;
+/*Black color to the text*/
+.tabs .tab a:hover {
+  background-color: transparent;
+  color: $green !important;
 }
+
+/*Text color on hover*/
+.tabs .tab a.active {
+  background-color: transparent !important;
+  color: $green !important;
+  font-weight: bold;
+}
+
+/*Background and text color when a tab is active*/
+.tabs .indicator {
+  background-color: $green !important;
+}
+
+// .modal {
+//   width: 40%;
+//   height: 40%;
+// }
 .rounded {
   border-radius: 10px;
 }
@@ -145,6 +217,11 @@ nav {
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+.condition {
+  li {
+    color: red;
   }
 }
 
@@ -178,15 +255,74 @@ nav {
   border: solid 1px $green;
 }
 
+.blob {
+  height: 270px;
+  width: 270px;
+  position: absolute;
+  right: 1%;
+  top: 2%;
+  z-index: -1;
+}
+
+.domain-name-changed-btn {
+  margin-top: 2rem;
+
+  .domain-not-change {
+    background-color: transparent !important;
+    color: #fc2424 !important;
+    margin-left: 0.5rem;
+    border: none;
+
+    &:hover {
+      background-color: #fc242417 !important;
+    }
+  }
+}
+
+#profile {
+  .profile-img {
+    width: 300px;
+    height: auto;
+    -webkit-box-shadow: -1px 3px 35px -16px rgba(4, 92, 12, 1);
+    -moz-box-shadow: -1px 3px 35px -16px rgba(4, 92, 12, 1);
+    box-shadow: -1px 3px 35px -16px rgba(4, 92, 12, 1);
+  }
+  .profile-info {
+    padding: 2rem;
+
+    h4,
+    h5 {
+      font-family: "Google Sans";
+      color: $black;
+    }
+  }
+}
+.modal {
+  border-radius: 10px;
+}
+
+.no-msg-img {
+  width: 500px;
+  height: auto;
+}
+
+// .vr {
+//   border-left: 1px solid rgb(187, 184, 184);
+//   height: 25rem;
+//   position: absolute;
+//   right: 50.7%;
+// }
+code {
+  background-color: #c5c5c4;
+}
+.page-footer {
+  background-color: $black;
+}
 @media only screen and (max-width: 600px) {
   h1 {
     margin-top: 0;
   }
-  .modal {
-    width: 100%;
-    height: 30%;
-    border-radius: 5px;
-  }
+
   .custom-btn {
     height: 3rem;
     width: 12rem;
@@ -197,7 +333,7 @@ nav {
   .small-div {
     position: absolute;
     width: 100vw;
-    height: 30vh;
+    height: 32vh;
     margin: 0 auto;
     top: 0;
     background-color: $green;
@@ -205,5 +341,15 @@ nav {
   }
   .project-btn {
     padding: 0;
+  }
+  .auth-btn {
+    height: 3rem;
+    width: 100%;
+  }
+  .blob {
+    display: none;
+  }
+  .banner-text {
+    margin-top: 0;
   }
 }

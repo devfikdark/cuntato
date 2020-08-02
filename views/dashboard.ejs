@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel='shortcut icon' type='image/x-icon' href='./img/favicon.ico' />
-
-    <title>Profile | <%= user.name %></title>
+    <title>Dashboard | <%= user.name %></title>
     <link
       rel="stylesheet"
       href="https://teamtigers.github.io/assets/css/materializecss.min.css"
@@ -42,9 +41,11 @@
               </li>
             </ul>
             <ul id="dropdown1" class="dropdown-content">
-              <li><a href="/dashboard">Dashboard</a></li>
+              <li><a href="/profile"><%= user.name %></a></li>
               <li class="divider" tabindex="-1"></li>
-              <li><a href="/">Sign Out</a></li>
+              <li>
+                <a href="/">Sign Out</a>
+              </li>
             </ul>
           </div>
         </nav>
@@ -52,41 +53,77 @@
     </header>
 
     <main>
-      <span id=<%= user.id %> ></span>
+      <div class="small-div"></div>
       <div class="container">
-        <div class="row" id="profile">
-          <div class="col s12">
-            <div class="card rounded">
-              <div class="card-content">
-                <div class="center-align">
-                  <img
-                    src=<%= user.picture %>
-                    alt="avatar"
-                    class="responsive-img circle halfway-fab profile-img"
-                  />
-                  <div class="profile-info">
-                    <h4><%= user.name %></h4>
-                    <h5><%= user.email %></h5>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s6">
-                    <div class="collection">
-                      <a
-                        href="/dashboard"
-                        class="collection-item green-text text-darken-4"
-                        ><span class="new badge green darken-4" id="projectCount">
-                        </span>Project
-                        created</a
-                      >
-                    </div>
-                  </div>
-                </div>
+        <h4 class="white-text">Your projects</h4>
+        <div class="row">
+          <div class="col s12 m6 l4">
+            <a href="#add-project" class="add-card modal-trigger">
+              <div class="card-panel rounded center-align">
+                <i class="material-icons center add-icon">add</i>
+                <h5>
+                  Add project
+                </h5>
               </div>
+            </a>
+          </div>
+        </div>
+
+        <span id=<%= user.id %> ></span>
+        <div class="row">
+          <div id="projectList"></div>
+        </div>
+      </div>
+
+      <!-- MODAL -->
+      <div id="add-project" class="modal rounded">
+        <div class="modal-content">
+          <div class="row">
+            <div class="input-field col s12">
+              <input
+                placeholder="eg. personal-site"
+                id="projectName"
+                type="text"
+                class="validate"
+                autocomplete="off"
+              />
+              <label for="projectName">Project Name</label>
+            </div>
+            <div class="input-field col s12">
+              <input
+                placeholder="eg. http://cuntato.herokuapp.com/"
+                id="domainURL"
+                type="text"
+                class="validate"
+                autocomplete="off"
+              />
+              <label for="domainURL">Domain name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <a href="" class="btn modal-btn auth-btn center"> Create</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <ul class="condition">
+                <li>* Your project name must be unique.</li>
+                <li>* Your project Domain URL must be provide.</li>
+                <li>
+                  * After creating project you'll be given a project credential
+                </li>
+                <li>
+                  * You can't make more than three project in free service. If
+                  you want to add more than three project you need to get the
+                  premium plan.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
+      <img src="./img/blbo2.svg" alt="blob1" class="blob" />
     </main>
 
     <footer class="page-footer">
@@ -141,13 +178,13 @@
         </div>
       </div>
     </footer>
-
+    </footer>
     <!-- jQuery cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Materialize js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Custom JS -->
     <script src="./js/app.js"></script>
-    <script src="./js/profileController.js"></script>
+    <script src="./js/dashboardController.js"></script>
   </body>
 </html>

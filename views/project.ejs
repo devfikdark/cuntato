@@ -34,9 +34,9 @@
   <body>
     <header>
       <div class="navbar-fixed">
-        <nav class="white z-depth-0">
+        <nav class="white z-depth-1">
           <div class="nav-wrapper">
-            <a href="#" class="brand-logo hide-on-small-only">Cuntato</a>
+            <a href="/dashboard" class="brand-logo">Cuntato</a>
             <ul id="nav-mobile" class="right">
               <li>
                 <img
@@ -50,10 +50,9 @@
             </ul>
             <ul id="dropdown1" class="dropdown-content">
               <li><a href="/profile"><%= user.name %></a></li>
+              <li><a href="/dashboard">Dashboard</a></li>
               <li class="divider" tabindex="-1"></li>
-              <li>
-                <a href="/logout">Sign Out</a>
-              </li>
+              <li><a href="/">Sign Out</a></li>
             </ul>
           </div>
         </nav>
@@ -62,50 +61,206 @@
 
     <main>
       <span id=<%= user.projectToken %> ></span>
-      <div class="small-div"></div>
-      <div class="left-align">
-        <a href="/profile" class="btn-flat white-text"
-          ><i class="material-icons left">arrow_back</i>Go back</a
+      <div class="fixed-action-btn">
+        <a
+          href="#question"
+          class="btn-floating modal-trigger btn-large blue darken-4 pulse"
         >
+          <i class="large material-icons">help</i>
+        </a>
       </div>
-      <div class="center-align white-text">
-        <span>project Name</span>
+      <div class="small-div"></div>
+
+      <div class="center-align white-text project-banner">
+        <span>Project name</span>
         <h3 class="white-text"><%= user.projectName %></h3>
       </div>
-      <br />
+
       <div class="container">
-        <div class="col s12">
-          <div class="row">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab"><a href="#setup">Setup</a></li>
+              <li class="tab">
+                <a class="active" href="#message">Message</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col s12" id="setup">
+            <div class="row">
+              <div class="input-field col s6">
+                <input
+                  autocomplete="off"
+                  id="domain"
+                  type="text"
+                  class="validate"
+                  validate
+                />
+                <label for="domain">Domain name</label>
+                <a href="#check" class="btn modal-trigger">Edit domain</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <ul class="collapsible rounded">
+                  <li class="active">
+                    <div class="collapsible-header rounded">
+                      <i class="material-icons">expand_more</i>Your project
+                      related code
+                    </div>
+                    <div class="collapsible-body">
+                      <div class="row">
+                        <div class="col s12">
+                          <h5>HTML</h5>
+                          <code id="html">
+                            $("#copy-btn").click(function () { var copyText =
+                            document.getElementById("project-credential"); var
+                            textArea = document.createElement("textarea");
+                            textArea.value = copyText.textContent;
+                            document.body.appendChild(textArea);
+                            textArea.select(); document.execCommand("Copy");
+                            textArea.remove(); showMessage("Code copied to
+                            clipboard"); });
+                          </code>
+                        </div>
+                        <div class="col s12">
+                          <!-- <div class="vr hide-on-med-and-down"></div> -->
+                          <h5>Script</h5>
+                          <code id="jquery">
+                            $(function () { let url =
+                            "https://cuntato.herokuapp.com/api/project-data";
+                            let data = { name: "sdjlkfj com", email:
+                            "datacom@gmail.com", message: "Hello, I have reached
+                            you through your personal website. Can you please
+                            help me to make a project? I'll give you $100.
+                            please let me know what do you think.", }; data =
+                            JSON.stringify(data); let projectID = "ghe05u8xkh";
+                            let currentURL = window.location.href; // like this
+                            http://localhost:5500/test.html" $.post( url, {
+                            data, projectID: projectID, currentURL: currentURL
+                            }, function () {} ) .done((res) => {
+                            console.log(res); }) .fail(() => {
+                            console.log("somthing wrong"); }); });
+                          </code>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s12" id="message">
+            <!-- IF MESSAGE FOUND THEN RENDER BELOW SECTION -->
             <div class="card rounded">
               <div class="card-content">
                 <div id="proTableID"></div>
               </div>
             </div>
+
+            <!-- IF MESSAGE NOT FOUND THEN RENDER BELOW SECTION -->
+            <div id="nothingData"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="question" class="modal">
+        <div class="modal-content">
+          <h4 class="center">How to setup</h4>
+          <p>
+            To get the functionality done you need to setup your personal site.
+            Right now we don't provide more than <b>3</b> input fields e.g.
+            Name, Email, Message. You need to give proper id to each input
+            field. You'll need jQuery to connect with the server. Copy the code
+            provided by us from the collapsible element and paste it in your
+            script tag. In name, email, and message field please set the id name
+            you used in your form.
+          </p>
+        </div>
+      </div>
+
+      <div id="check" class="modal">
+        <div class="modal-content center-align">
+          <h4 class="red-text text-lighten-1">
+            Your domain name will be changed. Are you sure?
+          </h4>
+          <div class="domain-name-changed-btn">
+            <a href="" id="yesChange" class="btn domain-change">Yes, change</a>
+            <a href="" id="noChange" class="btn domain-not-change">Cancel</a>
           </div>
         </div>
       </div>
     </main>
 
-    
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Cuntato</h5>
+            <p class="grey-text text-lighten-4">
+              An easy solution to add functionality in contact form for static
+              sites.
+            </p>
+            <p class="grey-text text-lighten-4">
+              If you find any issue related to the application or have any
+              suggestions please let us know by crating an issue in
+              <a href="https://github.com/pro-js/cuntato" target="_blank"
+                >github</a
+              >
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Our other works</h5>
+            <ul>
+              <li>
+                <a
+                  class="grey-text text-lighten-3"
+                  href="https://teamtigers.github.io/coronainfobd"
+                  target="_blank"
+                  >ConronaInfoBD</a
+                >
+              </li>
+              <li>
+                <a
+                  class="grey-text text-lighten-3"
+                  href="https://github.com/teamtigers/donate_plasma"
+                  target="_blank"
+                  >Donate Plasma</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2020 Copyright TeamTigers
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://teamtigers.github.io"
+            target="_blank"
+            >TeamTigers</a
+          >
+        </div>
+      </div>
+    </footer>
+    <img src="./img/blob.svg" alt="blob" class="blob" />
+
     <!-- jQuery cdn -->
-    <script 
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Materialize js cdn -->
-    <script 
-      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-    </script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- File download cdn -->
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-
     <!-- Custom JS -->
-    <script src="./js/projectController.js"></script>
     <script src="./js/app.js"></script>
-
+    <script src="./js/projectController.js"></script>
   </body>
 </html>

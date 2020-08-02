@@ -17,7 +17,7 @@ route.get('/google/callback',
   passport.authenticate(
     'google', 
     {
-      successRedirect: '/profile',
+      successRedirect: '/dashboard',
       failureRedirect: '/'
     }
 ));
@@ -35,7 +35,7 @@ route.get('/github/callback',
   passport.authenticate(
     'github', 
     {
-      successRedirect: '/profile',
+      successRedirect: '/dashboard',
       failureRedirect: '/'
     }
 ));
@@ -53,7 +53,7 @@ route.get('/linkedin/callback',
   passport.authenticate(
     'linkedin', 
     {
-      successRedirect: '/profile',
+      successRedirect: '/dashboard',
       failureRedirect: '/'
     }
 ));

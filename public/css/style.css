@@ -4,6 +4,20 @@ body {
   background-color: #f3f3f3;
   color: #141c14;
   font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 
 h1,
@@ -24,8 +38,15 @@ nav {
 }
 
 nav .btn {
+  background-color: #fff !important;
+  color: #045c0c !important;
   margin: 0.5rem 1rem;
   font-weight: 600;
+  border: none;
+}
+
+nav .btn:hover {
+  background-color: #045c0b21 !important;
 }
 
 nav #avatar {
@@ -89,19 +110,40 @@ nav .brand-logo {
   color: #141c14 !important;
 }
 
+.banner-text {
+  margin-top: 4em;
+}
+
 .btn {
-  background-color: #fff !important;
-  color: #045c0c !important;
+  background-color: #045c0c !important;
+  color: #fff !important;
   font-family: "Google Sans";
   text-transform: none;
   border-radius: 5px;
+  border: 1px solid #045c0c;
 }
 
-.btn img {
-  vertical-align: middle;
+.auth-btn {
+  height: 3rem;
+  width: 40%;
+  line-height: 3;
+  background-color: #fff !important;
+  color: #141c14 !important;
+  border: 1px solid #141c14;
+}
+
+.auth-btn:hover {
+  background-color: #141c14 !important;
+  color: #fff !important;
+}
+
+.auth-btn img {
+  margin-top: 0.6rem;
 }
 
 .custom-btn {
+  background-color: #045c0c !important;
+  color: #fff !important;
   height: 4rem;
   width: 16rem;
   font-size: 1.5rem;
@@ -109,21 +151,54 @@ nav .brand-logo {
   border-radius: 10px;
 }
 
-.modal-btn {
-  margin-top: 1.8rem;
+.custom-btn:hover {
+  background-color: #fff !important;
+  color: #045c0c !important;
 }
 
-.modal-content {
-  vertical-align: middle;
+.project-banner {
+  margin-top: 2em;
+  margin-bottom: 4em;
 }
 
-.google-img {
-  padding: 10px;
+.tabs {
+  margin-top: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 5px;
+  background: transparent;
 }
 
-.modal {
-  width: 40%;
-  height: 40%;
+.tabs {
+  margin-bottom: 3em;
+}
+
+.tabs .tab a {
+  color: #045c0b75 !important;
+  background: transparent;
+  text-transform: none;
+}
+
+/*Black color to the text*/
+.tabs .tab a:hover {
+  background-color: transparent;
+  color: #045c0c !important;
+}
+
+/*Text color on hover*/
+.tabs .tab a.active {
+  background-color: transparent !important;
+  color: #045c0c !important;
+  font-weight: bold;
+}
+
+/*Background and text color when a tab is active*/
+.tabs .indicator {
+  background-color: #045c0c !important;
 }
 
 .rounded {
@@ -159,6 +234,10 @@ nav .brand-logo {
   text-decoration: underline;
 }
 
+.condition li {
+  color: red;
+}
+
 .add-icon {
   font-size: 2.5em;
 }
@@ -188,14 +267,67 @@ nav .brand-logo {
   border: solid 1px #045c0c;
 }
 
+.blob {
+  height: 270px;
+  width: 270px;
+  position: absolute;
+  right: 1%;
+  top: 2%;
+  z-index: -1;
+}
+
+.domain-name-changed-btn {
+  margin-top: 2rem;
+}
+
+.domain-name-changed-btn .domain-not-change {
+  background-color: transparent !important;
+  color: #fc2424 !important;
+  margin-left: 0.5rem;
+  border: none;
+}
+
+.domain-name-changed-btn .domain-not-change:hover {
+  background-color: #fc242417 !important;
+}
+
+#profile .profile-img {
+  width: 300px;
+  height: auto;
+  -webkit-box-shadow: -1px 3px 35px -16px #045c0c;
+  box-shadow: -1px 3px 35px -16px #045c0c;
+}
+
+#profile .profile-info {
+  padding: 2rem;
+}
+
+#profile .profile-info h4,
+#profile .profile-info h5 {
+  font-family: "Google Sans";
+  color: #141c14;
+}
+
+.modal {
+  border-radius: 10px;
+}
+
+.no-msg-img {
+  width: 500px;
+  height: auto;
+}
+
+code {
+  background-color: #c5c5c4;
+}
+
+.page-footer {
+  background-color: #141c14;
+}
+
 @media only screen and (max-width: 600px) {
   h1 {
     margin-top: 0;
-  }
-  .modal {
-    width: 100%;
-    height: 30%;
-    border-radius: 5px;
   }
   .custom-btn {
     height: 3rem;
@@ -207,7 +339,7 @@ nav .brand-logo {
   .small-div {
     position: absolute;
     width: 100vw;
-    height: 30vh;
+    height: 32vh;
     margin: 0 auto;
     top: 0;
     background-color: #045c0c;
@@ -215,6 +347,16 @@ nav .brand-logo {
   }
   .project-btn {
     padding: 0;
+  }
+  .auth-btn {
+    height: 3rem;
+    width: 100%;
+  }
+  .blob {
+    display: none;
+  }
+  .banner-text {
+    margin-top: 0;
   }
 }
 /*# sourceMappingURL=style.css.map */

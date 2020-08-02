@@ -85,11 +85,3 @@ module.exports = (passport) => {
     }
   ));
 };
-
-function checkAuthUser (user) {
-  let checkUser =  authModel.findOne({ email: user.email });
-  if (!checkUser) {
-    checkUser =  authModel.create(user);
-  }
-  return checkUser;
-}

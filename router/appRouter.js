@@ -5,12 +5,17 @@ const {
   postFromData,
   getProjectToken,
   getProjectList,
+  getProjectCount,
+  getProjectDomain,
   updateURL 
 } = require('./../controllers/appController');
 
 /*** Get Request ***/
 route.get('/project-data', getFromData);
+route.get('/get-project-count', getProjectCount);
 route.get('/get-project-list', getProjectList);
+route.get('/get-project-domain', getProjectDomain);
+
 
 /*** Post Request ***/
 route.post('/project-data', postFromData);

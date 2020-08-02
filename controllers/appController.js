@@ -1,7 +1,6 @@
 const catchAsync = require('./../utils/catchAsync');
 const dataModel = require('../model/dataModel');
 const projectModel = require('../model/projectModel');
-const authModel = require('./../model/authModel');
 
 // Get data user project wise
 exports.getFromData = catchAsync(async(req, res, next) => {
@@ -57,15 +56,21 @@ exports.postFromData = catchAsync(async(req, res, next) => {
 exports.getProjectToken = catchAsync(async(req, res, next) => {
   let userID = req.body.userID;
   let projectName = req.body.projectName;
-  // get domain URL
-  let domainURL = await authModel.findById(userID);
-    domainURL = domainURL.domain;
+  let domainURL = req.body.domainURL;
+
+  res.setHeader('Content-type', 'application/json');
+  if (projectName === null || projectName === undefined || 
+      projectName.length === 0) {
+    return resMsg(res, 200, "failed", "Provide a valid project name");
+  }
+  if (domainURL === null || domainURL === undefined || 
+      domainURL.length === 0) {
+    return resMsg(res, 200, "failed", "Provide a valid domain URL");
+  }
   // get project count
   let oldProData = await projectModel.find({ _usertoken: userID });
   // check duplicate project name
   let doubleName = await projectModel.findOne({ _projectname: projectName });  
-  
-  res.setHeader('Content-type', 'application/json');
   if (doubleName) {
     return resMsg(res, 200, "failed", "Already use this name");
   }
@@ -81,7 +86,7 @@ exports.getProjectToken = catchAsync(async(req, res, next) => {
     }
     let createData = await projectModel.create(newProData);
     if (createData) {
-      resData(res, 200, "ok", projectToken);
+      resMsg(res, 200, "ok", "create success");
       return;
     } else {
       resMsg(res, 200, "failed", "Somthing want wrong");
@@ -102,23 +107,36 @@ exports.getProjectList = catchAsync(async(req, res, next) => {
   } else {
     resMsg(res, 200, "ok", "Nothing found here!!!");
   }
-})
+});
+
+exports.getProjectCount = catchAsync(async(req, res, next) => {
+  let userID = req.query.userID;
+  let data = await projectModel.find({ _usertoken: userID });
+  
+  if (data) data = data.length;
+  else data = 0;
+  res.setHeader('Content-type', 'application/json');
+  resData(res, 200, "ok", data);
+  return;
+});
+
+exports.getProjectDomain = catchAsync(async(req, res, next) => {
+  let projectToken = req.query.projectToken;
+  let data = await projectModel.find({ _projecttoken: projectToken });
+  res.setHeader('Content-type', 'application/json');
+  resData(res, 200, "ok", data._userdomain);
+  return;
+});
 
 exports.updateURL = catchAsync(async(req, res, next) => {
-  let userID = req.body.userID;
+  let projectToken = req.body.projectToken;
   let newURL = req.body.newURL;
-  let oldUrl = await authModel.findById(userID);
-    oldUrl = oldUrl.domain;
+  let oldUrl = await projectModel.findOne({ _projecttoken: projectToken });
+    oldUrl = oldUrl._userdomain;
 
-  let data = await authModel
-    .findOneAndUpdate(
-      { domain: oldUrl },
-      { domain: newURL }
-    );
-  
   res.setHeader('Content-type', 'application/json');
-  if (data) {
-    let projectCnt = await projectModel.find();
+  if (oldUrl) {
+    let projectCnt = await projectModel.find({ _projecttoken: projectToken });
       projectCnt = projectCnt.length;
     while (projectCnt--) {
       await projectModel

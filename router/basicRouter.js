@@ -2,7 +2,7 @@ module.exports = (app) => {
   app.get('/', (req, res) => {
     res.header('Content-Type', 'text/html');
     if (req.isAuthenticated()) {
-      res.redirect('/profile');
+      res.redirect('/dashboard');
       return;
     }
     res.render('index');
@@ -15,6 +15,13 @@ module.exports = (app) => {
     });
   });
   
+  app.get('/dashboard', isLoggedIn, (req, res) => {
+    res.header('Content-Type', 'text/html');
+    res.render('dashboard' , {
+      user: req.user
+    });
+  });
+
   app.get('/project', isLoggedIn, (req, res) => {
     req.user.projectName = req.query.projectName;
     req.user.projectToken = req.query.projectToken;

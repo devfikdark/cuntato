@@ -1,17 +1,40 @@
 $(function() {
   let projectToken = $("span").attr("id");
+  getProjectDomain(projectToken);
   getProjectData(projectToken);
+  updateDomainURL(projectToken);
 });
+
+function getProjectDomain(projectToken) {
+  let url = "https://cuntato.herokuapp.com/api/get-project-domain?projectToken=";
+    url += projectToken;
+  $.get(url, function() {})
+    .done((res) => {
+      let str = res.data;
+      $("#domain").val(str);
+    })
+    .fail(() => {
+      showToast("Problem Load Domain URL!!!", "red darken-3");
+    })
+}
 
 function getProjectData(projectToken) {
   let url = "https://cuntato.herokuapp.com/api/project-data?project=";
     url += projectToken;
   $.get(url, function() {})
     .done((res) => {
-      generateTable(res.getData);
-      downloadData();
-      console.log(res);
-      showToast("Data load success...", "green darken-3");
+      if (res.getData === undefined || res.getData === null 
+        || res.getData.length === 0) {
+          let str = "<div class='center-align'> <img src='./img/svg/empty.svg'";
+            str += "alt='empty' class='responsive-img no-msg-img' />";
+            str += "<h3>No one has written yet!</h3></div>";
+            $("#nothingData").html(str);
+          showToast("Nothing here ...", "cyan darken-3");
+      } else {
+        generateTable(res.getData);
+        downloadData();
+        showToast("Data load success...", "green darken-3");
+      }
     })
     .fail(() => {
       showToast("Problem Load projects!!!", "red darken-3");
@@ -41,6 +64,33 @@ function downloadData() {
         'csvHtml5',
         'pdfHtml5'
     ]
+  });
+}
+
+function updateDomainURL(projectToken) {
+  $("#yesChange").click(function() {
+    let newURL = $("#domain").val();
+    let url = "https://cuntato.herokuapp.com/api/update-domain-url";
+    $.post(url, 
+      { projectToken: projectToken, newURL: newURL}, 
+      function() {})
+      .done((res) => {
+        if (res.status === "ok") {
+          showToast("Update your domain success ...", "green darken-3");
+        } else {
+          showToast("Somthing want wrong!!!", "red darken-3");
+        }
+      })
+      .fail(() => {
+        showToast("Somthing want wrong!!!", "red darken-3");
+      })
+    $('.modal').modal('close');  
+    $("#domain").val("");
+    getProjectDomain(projectToken);
+  });
+
+  $("#noChange").click(function() {
+    $('.modal').modal('close');  
   });
 }
 
