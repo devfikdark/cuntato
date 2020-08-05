@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+
 $green: #045c0c;
 $white-green: #f3f3f3;
 $black: #141c14;
 $purple: #7b22d6;
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: $white-green;
@@ -26,15 +32,10 @@ h6 {
   color: $green;
 }
 nav {
-  height: 3.5rem;
-  padding: 0;
-  top: 0;
-  margin: 0;
-
   .btn {
     background-color: #fff !important;
     color: $green !important;
-    margin: 0.5rem 1rem;
+    margin: 1rem 1rem;
     font-weight: 600;
     border: none;
 
@@ -45,11 +46,11 @@ nav {
   #avatar {
     max-height: 40px;
     max-width: 40px;
-    margin: 0.5rem 1rem;
+    margin: 1rem 1rem;
   }
 
   .brand-logo {
-    margin: -0.5rem 1rem;
+    margin: 0.1rem 1rem;
     font-family: "Righteous", cursive;
     color: $green;
   }
@@ -63,7 +64,7 @@ nav {
 .small-div {
   position: absolute;
   width: 100vw;
-  height: 28vh;
+  height: 18em;
   margin: 0 auto;
   top: 0;
   background-color: $green;
@@ -98,6 +99,30 @@ nav {
 #dropdown1 {
   a {
     color: $black !important;
+  }
+}
+
+.progress {
+  margin: 0;
+  // display: none;
+}
+.circle-loader {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+
+  .text {
+    font-size: 2em;
+    font-family: "Google Sans", sans-serif;
+    margin-top: 2rem;
+    color: grey;
   }
 }
 
@@ -263,6 +288,18 @@ nav {
   top: 2%;
   z-index: -1;
 }
+#wave {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  transform: scaleY(-1);
+
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 
 .domain-name-changed-btn {
   margin-top: 2rem;
@@ -306,6 +343,10 @@ nav {
   height: auto;
 }
 
+.copy-icon {
+  margin-top: 1rem;
+}
+
 // .vr {
 //   border-left: 1px solid rgb(187, 184, 184);
 //   height: 25rem;
@@ -330,15 +371,7 @@ code {
     line-height: 2.5;
     border-radius: 10px;
   }
-  .small-div {
-    position: absolute;
-    width: 100vw;
-    height: 32vh;
-    margin: 0 auto;
-    top: 0;
-    background-color: $green;
-    z-index: -1;
-  }
+
   .project-btn {
     padding: 0;
   }

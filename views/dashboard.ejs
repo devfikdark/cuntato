@@ -7,7 +7,7 @@
     <title>Dashboard | <%= user.name %></title>
     <link
       rel="stylesheet"
-      href="https://teamtigers.github.io/assets/css/materializecss.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"    
     />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -22,6 +22,7 @@
       href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css"
     />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/loader.css" />
   </head>
   <body>
     <header>
@@ -43,16 +44,25 @@
             <ul id="dropdown1" class="dropdown-content">
               <li><a href="/profile"><%= user.name %></a></li>
               <li class="divider" tabindex="-1"></li>
-              <li>
-                <a href="/logout">Sign Out</a>
-              </li>
+              <li><a href="/logout">Sign Out</a></li>
             </ul>
           </div>
         </nav>
       </div>
     </header>
 
-    <main>
+    <!-- PRELOADER  -->
+
+    <div class="circle-loader">
+      <div class="loader-container">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+      </div>
+    </div>
+
+    <main class="main-content">
       <div class="small-div"></div>
       <div class="container">
         <h4 class="white-text">Your projects</h4>
@@ -86,37 +96,48 @@
                 type="text"
                 class="validate"
                 autocomplete="off"
+                required
               />
               <label for="projectName">Project Name</label>
             </div>
             <div class="input-field col s12">
               <input
-                placeholder="eg. http://cuntato.herokuapp.com/"
+                placeholder="eg. https://cuntato.herokuapp.com/"
                 id="domainURL"
                 type="text"
                 class="validate"
+                pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"
                 autocomplete="off"
+                required
               />
               <label for="domainURL">Domain name</label>
+              <span
+                class="helper-text"
+                data-error="Invalid url"
+                data-success="Valid url"
+              ></span>
             </div>
           </div>
           <div class="row">
             <div class="col s12">
-              <a id="createID" class="btn modal-btn auth-btn center"> Create</a>
+              <input
+                id="createID"
+                type="submit"
+                value="Create project"
+                class="btn auth-btn center"
+              />
             </div>
           </div>
           <div class="row">
             <div class="col s12">
               <ul class="condition">
                 <li>* Your project name must be unique.</li>
-                <li>* Your project Domain URL must be provide.</li>
                 <li>
-                  * After creating project you'll be given a project credential
+                  * After creating project you'll be given a project token.
                 </li>
                 <li>
-                  * You can't make more than three project in free service. If
-                  you want to add more than three project you need to get the
-                  premium plan.
+                  * You can't make more than three project right now.
+                  <a href="https://github.com/pro-js/cuntato" target="_blank">Learn more</a>
                 </li>
               </ul>
             </div>
@@ -127,48 +148,9 @@
     </main>
 
     <footer class="page-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Cuntato</h5>
-            <p class="grey-text text-lighten-4">
-              An easy solution to add functionality in contact form for static
-              sites.
-            </p>
-            <p class="grey-text text-lighten-4">
-              If you find any issue related to the application or have any
-              suggestions please let us know by crating an issue in
-              <a href="https://github.com/pro-js/cuntato" target="_blank"
-                >github</a
-              >
-            </p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Our other works</h5>
-            <ul>
-              <li>
-                <a
-                  class="grey-text text-lighten-3"
-                  href="https://teamtigers.github.io/coronainfobd"
-                  target="_blank"
-                  >ConronaInfoBD</a
-                >
-              </li>
-              <li>
-                <a
-                  class="grey-text text-lighten-3"
-                  href="https://github.com/teamtigers/donate_plasma"
-                  target="_blank"
-                  >Donate Plasma</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
       <div class="footer-copyright">
         <div class="container">
-          © 2020 Copyright TeamTigers
+          © 2020 Copyright TeamTigers, Made with ❤️
           <a
             class="grey-text text-lighten-4 right"
             href="https://teamtigers.github.io"
@@ -177,7 +159,6 @@
           >
         </div>
       </div>
-    </footer>
     </footer>
     <!-- jQuery cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

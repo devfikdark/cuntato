@@ -7,4 +7,9 @@ $(function () {
     constrainWidth: false,
     autoTrigger: true,
   });
+
+  $(window).on("load", function () {
+    $(".progress").hide();
+    $(".main-content").fadeIn();
+  });
 });

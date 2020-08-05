@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #f3f3f3;
   color: #141c14;
@@ -30,17 +35,10 @@ h6 {
   color: #045c0c;
 }
 
-nav {
-  height: 3.5rem;
-  padding: 0;
-  top: 0;
-  margin: 0;
-}
-
 nav .btn {
   background-color: #fff !important;
   color: #045c0c !important;
-  margin: 0.5rem 1rem;
+  margin: 1rem 1rem;
   font-weight: 600;
   border: none;
 }
@@ -52,11 +50,11 @@ nav .btn:hover {
 nav #avatar {
   max-height: 40px;
   max-width: 40px;
-  margin: 0.5rem 1rem;
+  margin: 1rem 1rem;
 }
 
 nav .brand-logo {
-  margin: -0.5rem 1rem;
+  margin: 0.1rem 1rem;
   font-family: "Righteous", cursive;
   color: #045c0c;
 }
@@ -72,7 +70,7 @@ nav .brand-logo {
 .small-div {
   position: absolute;
   width: 100vw;
-  height: 28vh;
+  height: 18em;
   margin: 0 auto;
   top: 0;
   background-color: #045c0c;
@@ -108,6 +106,39 @@ nav .brand-logo {
 
 #dropdown1 a {
   color: #141c14 !important;
+}
+
+.progress {
+  margin: 0;
+}
+
+.circle-loader {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 999;
+}
+
+.circle-loader .text {
+  font-size: 2em;
+  font-family: "Google Sans", sans-serif;
+  margin-top: 2rem;
+  color: grey;
 }
 
 .banner-text {
@@ -159,6 +190,10 @@ nav .brand-logo {
 .project-banner {
   margin-top: 2em;
   margin-bottom: 4em;
+}
+
+.copy {
+  cursor: copy;
 }
 
 .tabs {
@@ -276,6 +311,19 @@ nav .brand-logo {
   z-index: -1;
 }
 
+#wave {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  -webkit-transform: scaleY(-1);
+          transform: scaleY(-1);
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .domain-name-changed-btn {
   margin-top: 2rem;
 }
@@ -317,6 +365,10 @@ nav .brand-logo {
   height: auto;
 }
 
+.copy-icon {
+  margin-top: 1rem;
+}
+
 code {
   background-color: #c5c5c4;
 }
@@ -335,15 +387,6 @@ code {
     font-size: 1.125rem;
     line-height: 2.5;
     border-radius: 10px;
-  }
-  .small-div {
-    position: absolute;
-    width: 100vw;
-    height: 32vh;
-    margin: 0 auto;
-    top: 0;
-    background-color: #045c0c;
-    z-index: -1;
   }
   .project-btn {
     padding: 0;

@@ -1,4 +1,5 @@
 $(function() {
+  $("main").hide();
   let projectToken = $("span").attr("id");
   getProjectDomain(projectToken);
   setProjectRelatedCode(projectToken);
@@ -8,7 +9,7 @@ $(function() {
 
 function getProjectDomain(projectToken) {
   console.log(projectToken)
-  let url = "https://cuntato.herokuapp.com/api/get-project-domain?projectToken=";
+  let url = "http://localhost:3000/api/get-project-domain?projectToken=";
     url += projectToken;
   $.get(url, function() {})
     .done((res) => {
@@ -30,7 +31,7 @@ function setProjectRelatedCode(projectToken) {
 
   // jQuery
   let strjQuery = "$('#btnSend').click(function() {<br>";
-    strjQuery += "let url = 'https://cuntato.herokuapp.com/api/project-data';<br>";
+    strjQuery += "let url = 'http://localhost:3000/api/project-data';<br>";
     strjQuery += "let data = {<br>";
     strjQuery += "'name': $('#dataName').val(),<br>";
     strjQuery += "'email': $('#dataEmail').val(),<br>";
@@ -45,10 +46,26 @@ function setProjectRelatedCode(projectToken) {
     strjQuery += "console.log('Somthing wrong !!!')<br>"
     strjQuery += "})<br>});<br>"
   $("#codejQuery").html(strjQuery); 
+
+  // copy code
+  copyCode();
 };
-        
+
+function copyCode() {
+  $("#code-copy-btn").click(function () {
+    let copyText = document.getElementById("codejQuery");
+    let textArea = document.createElement("textarea");
+    textArea.value = copyText.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("Copy");
+    textArea.remove();
+    showToast("Code copied to clipboard", "green darken-3");
+  }); 
+}
+
 function getProjectData(projectToken) {
-  let url = "https://cuntato.herokuapp.com/api/project-data?project=";
+  let url = "http://localhost:3000/api/project-data?project=";
     url += projectToken;
   $.get(url, function() {})
     .done((res) => {
@@ -58,15 +75,15 @@ function getProjectData(projectToken) {
             str += "alt='empty' class='responsive-img no-msg-img' />";
             str += "<h3>No one has written yet!</h3></div>";
             $("#nothingData").html(str);
-          showToast("Nothing here ...", "cyan darken-3");
       } else {
         generateTable(res.getData);
         downloadData();
-        showToast("Data load success...", "green darken-3");
       }
+      $("main").show();
+      $(".circle-loader").hide();
     })
     .fail(() => {
-      showToast("Problem Load projects!!!", "red darken-3");
+      showToast("Problem Load messages!!!", "red darken-3");
     })
 }
 
@@ -99,7 +116,7 @@ function downloadData() {
 function updateDomainURL(projectToken) {
   $("#yesChange").click(function() {
     let newURL = $("#domain").val();
-    let url = "https://cuntato.herokuapp.com/api/update-domain-url";
+    let url = "http://localhost:3000/api/update-domain-url";
     $.post(url, 
       { projectToken: projectToken, newURL: newURL}, 
       function() {})

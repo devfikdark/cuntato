@@ -1,11 +1,12 @@
 $(function() {
   let userID = $("span").attr("id");
+  $("main").hide();
   getUserProjects(userID);
   createProject(userID);
 });
 
 function getUserProjects(userID) {
-  let url = "https://cuntato.herokuapp.com/api/get-project-list?userID=";
+  let url = "http://localhost:3000/api/get-project-list?userID=";
     url += userID;
   $.get(url, function() {})
     .done((res) => {
@@ -28,6 +29,8 @@ function getUserProjects(userID) {
         $("#projectList").html(str);
         copyToClipboard();
       }
+      $("main").show();
+      $(".circle-loader").hide();
     })
     .fail(() => {
       showToast("Problem Load projects!!!", "red darken-3");
@@ -53,14 +56,18 @@ function createProject(userID) {
   $("#createID").click(function() {
     let projectName = $("#projectName").val();
     let domainURL = $("#domainURL").val();
-    let url = "https://cuntato.herokuapp.com/api/get-project-token";
+    let url = "http://localhost:3000/api/get-project-token";
     $.post(url, 
         { userID: userID , projectName: projectName, domainURL: domainURL }, 
         function() {})
       .done((res) => {
+        console.log(res)
         if (res.status === "ok") {
           showToast("Project create success...", "green darken-3");
           getUserProjects(userID);
+          $("#projectName").val("");
+          $("#domainURL").val("");
+          $('.modal').modal('close');
         } else if (res.message === "Provide a valid project name") {
           showToast("Please, provide a valid project name", "cyan darken-3");
         }else if (res.message === "Provide a valid domain URL") {
@@ -74,9 +81,6 @@ function createProject(userID) {
       .fail(() => {
         showToast("Somthing want wrong!!!", "red darken-3");
       })
-    $("#projectName").val("");
-    $("#domainURL").val("");
-    $('.modal').modal('close');
   });
 }
 

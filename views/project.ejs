@@ -7,7 +7,7 @@
     <title>Project | <%= user.projectName %></title>
     <link
       rel="stylesheet"
-      href="https://teamtigers.github.io/assets/css/materializecss.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"    
     />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -30,6 +30,7 @@
       href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" 
     />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/loader.css" />
   </head>
   <body>
     <header>
@@ -40,7 +41,7 @@
             <ul id="nav-mobile" class="right">
               <li>
                 <img
-                  src= <%= user.picture %>
+                  src=<%= user.picture %>
                   alt="avatar"
                   id="avatar"
                   class="responsive-img circle dropdown-trigger"
@@ -59,7 +60,18 @@
       </div>
     </header>
 
-    <main>
+    <!-- PRELOADER -->
+
+    <div class="circle-loader">
+      <div class="loader-container">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+      </div>
+    </div>
+
+    <main class="main-content">
       <span id=<%= user.projectToken %> ></span>
       <div class="fixed-action-btn">
         <a
@@ -88,18 +100,31 @@
           </div>
 
           <div class="col s12" id="setup">
-            <div class="row">
-              <div class="input-field col s6">
-                <input
-                  autocomplete="off"
-                  id="domain"
-                  type="text"
-                  class="validate"
-                  validate
-                />
-                <a href="#check" class="btn modal-trigger">Edit domain</a>
+            <form action="">
+              <div class="row">
+                <div class="input-field col s12 m8 l6">
+                  <input
+                    autocomplete="off"
+                    id="domain"
+                    type="text"
+                    pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"
+                    class="validate"
+                    validate
+                  />
+                  <span
+                    class="helper-text"
+                    data-error="Invalid url"
+                    data-success="Valid url"
+                    >Make sure to add valid url</span
+                  >
+                  <div class="row">
+                    <div class="col s12">
+                      <a href="#check" class="btn modal-trigger">Edit domain</a>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            </form>
             <div class="row">
               <div class="col s12">
                 <ul class="collapsible rounded">
@@ -120,8 +145,17 @@
                           </code>
                         </div>
                         <div class="col s12">
-                          <!-- <div class="vr hide-on-med-and-down"></div> -->
-                          <h5>Script</h5>
+                          <div class="row">
+                            <div class="col s12">
+                              <h5 class="left">Script</h5>
+                              <a id="code-copy-btn"><i 
+                                  class="material-icons right black-text copy"
+                                  >content_copy</i
+                                ></a
+                              >
+                            </div>
+                          </div>
+
                           <code id="jquery">
                             <div id="codejQuery"></div>
                           </code>
@@ -142,7 +176,7 @@
                 <!-- IF MESSAGE NOT FOUND THEN RENDER BELOW SECTION -->
                 <div id="nothingData"></div>
               </div>
-            </div>            
+            </div> 
           </div>
         </div>
       </div>
@@ -150,15 +184,33 @@
       <div id="question" class="modal">
         <div class="modal-content">
           <h4 class="center">How to setup</h4>
-          <p>
-            To get the functionality done you need to setup your personal site.
-            Right now we don't provide more than <b>3</b> input fields e.g.
-            Name, Email, Message. You need to give proper id to each input
-            field. You'll need jQuery to connect with the server. Copy the code
-            provided by us from the collapsible element and paste it in your
-            script tag. In name, email, and message field please set the id name
-            you used in your form.
-          </p>
+          <ul>
+            <li class="red-text text-darken-2">
+              * To setup your project go to setup tab.
+            </li>
+            <li class="red-text text-darken-2">
+              * In the domain field you'll see your provided domain name where
+              you wanted to host your site. You can change domain name if you
+              change your hosting site to another domain. Please keep in mind
+              your provided domain name should be matched with the hosting
+              domain.
+            </li>
+            <li class="red-text text-darken-2">
+              * You'll be provided demo <code>HTML</code> and
+              <code>jQuery</code> code to get started. You can't have more than
+              three fields in your contact form.
+            </li>
+            <li class="red-text text-darken-2">
+              * Place the <code>jQuery</code> code after jQuery CDN. You can
+              change <b>name</b>, <b>email</b>, <b>message</b> field's id if you
+              want. But make sure your input field's id match in
+              <code>HTML</code> and <code>jQuery</code>.
+            </li>
+            <li class="red-text text-darken-2">
+              * In done() & fail() methods you can insert any toast or alert
+              item if you want.
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -176,48 +228,9 @@
     </main>
 
     <footer class="page-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Cuntato</h5>
-            <p class="grey-text text-lighten-4">
-              An easy solution to add functionality in contact form for static
-              sites.
-            </p>
-            <p class="grey-text text-lighten-4">
-              If you find any issue related to the application or have any
-              suggestions please let us know by crating an issue in
-              <a href="https://github.com/pro-js/cuntato" target="_blank"
-                >github</a
-              >
-            </p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Our other works</h5>
-            <ul>
-              <li>
-                <a
-                  class="grey-text text-lighten-3"
-                  href="https://teamtigers.github.io/coronainfobd"
-                  target="_blank"
-                  >ConronaInfoBD</a
-                >
-              </li>
-              <li>
-                <a
-                  class="grey-text text-lighten-3"
-                  href="https://github.com/teamtigers/donate_plasma"
-                  target="_blank"
-                  >Donate Plasma</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
       <div class="footer-copyright">
         <div class="container">
-          © 2020 Copyright TeamTigers
+          © 2020 Copyright TeamTigers, Made with ❤️
           <a
             class="grey-text text-lighten-4 right"
             href="https://teamtigers.github.io"
