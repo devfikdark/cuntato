@@ -4,7 +4,7 @@ $(function() {
 });
 
 function getProjectCount(userID) {
-  let url = "http://localhost:3000/api/get-project-count?userID=";
+  let url = "https://cuntato.herokuapp.com/api/get-project-count?userID=";
     url += userID;
   $.get(url, function() {})
     .done((res) => {

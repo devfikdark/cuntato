@@ -8,12 +8,10 @@ $(function() {
 });
 
 function getProjectDomain(projectToken) {
-  console.log(projectToken)
-  let url = "http://localhost:3000/api/get-project-domain?projectToken=";
+  let url = "https://cuntato.herokuapp.com/api/get-project-domain?projectToken=";
     url += projectToken;
   $.get(url, function() {})
     .done((res) => {
-      console.log(res)
       let str = res.data;
       $("#domain").val(str);
     })
@@ -31,7 +29,7 @@ function setProjectRelatedCode(projectToken) {
 
   // jQuery
   let strjQuery = "$('#btnSend').click(function() {<br>";
-    strjQuery += "let url = 'http://localhost:3000/api/project-data';<br>";
+    strjQuery += "let url = 'https://cuntato.herokuapp.com/api/project-data';<br>";
     strjQuery += "let data = {<br>";
     strjQuery += "'name': $('#dataName').val(),<br>";
     strjQuery += "'email': $('#dataEmail').val(),<br>";
@@ -65,7 +63,7 @@ function copyCode() {
 }
 
 function getProjectData(projectToken) {
-  let url = "http://localhost:3000/api/project-data?project=";
+  let url = "https://cuntato.herokuapp.com/api/project-data?project=";
     url += projectToken;
   $.get(url, function() {})
     .done((res) => {
@@ -79,8 +77,8 @@ function getProjectData(projectToken) {
         generateTable(res.getData);
         downloadData();
       }
-      $("main").show();
       $(".circle-loader").hide();
+      $("main").show();
     })
     .fail(() => {
       showToast("Problem Load messages!!!", "red darken-3");
@@ -116,7 +114,7 @@ function downloadData() {
 function updateDomainURL(projectToken) {
   $("#yesChange").click(function() {
     let newURL = $("#domain").val();
-    let url = "http://localhost:3000/api/update-domain-url";
+    let url = "https://cuntato.herokuapp.com/api/update-domain-url";
     $.post(url, 
       { projectToken: projectToken, newURL: newURL}, 
       function() {})

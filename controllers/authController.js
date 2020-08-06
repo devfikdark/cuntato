@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const GithubStrategy = require('passport-github2').Strategy;
 const LinkedinStrategy = require('passport-linkedin-oauth2').Strategy;
@@ -32,6 +33,7 @@ module.exports = (passport) => {
           checkUser = await authModel.create(user);
         }
         user.id = checkUser._id;
+        user.jwtToken = createToken(checkUser._id);
         return cb(null, user);
       });
     }
@@ -56,6 +58,7 @@ module.exports = (passport) => {
           checkUser = await authModel.create(user);
         }
         user.id = checkUser._id;
+        user.jwtToken = createToken(checkUser._id);
         return cb(null, user);
       });
     }
@@ -80,8 +83,20 @@ module.exports = (passport) => {
           checkUser = await authModel.create(user);
         }
         user.id = checkUser._id;
+        user.jwtToken = createToken(checkUser._id);
         return cb(null, user);
       });
     }
   ));
+};
+
+// Make JWT token
+let createToken = id => {
+  return jwt.sign(
+    { id }, 
+    process.env.JWT_SECRET, 
+    { 
+      expiresIn: process.env.JWT_EXPIRES_IN 
+    }
+  );
 };

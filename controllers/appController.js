@@ -1,13 +1,33 @@
+const { promisify } = require('util');
+const jwt = require('jsonwebtoken');
 const catchAsync = require('./../utils/catchAsync');
-const dataModel = require('../model/dataModel');
-const projectModel = require('../model/projectModel');
+const dataModel = require('./../model/dataModel');
+const projectModel = require('./../model/projectModel');
+const authModel = require('./../model/authModel');
 
 // Get data user project wise
 exports.getFromData = catchAsync(async(req, res, next) => {
   let projectToken = req.query.project;
-  let getData = await dataModel.find({ _project: projectToken });
-  
   res.setHeader('Content-type', 'application/json');
+  if (req.user === undefined || req.user.jwtToken === undefined) {
+    resMsg(res, 200, "failed", 
+      "You are not logged in! Please log in to get access!!!"
+    );
+    return;
+  }
+  // Verification token
+  let decoded = await promisify(jwt.verify)
+    (req.user.jwtToken, process.env.JWT_SECRET);
+  let currentUser = await authModel.findById(decoded.id);
+  if (!currentUser) currentID = false;
+  else currentID = currentUser._id;
+  if (currentID === false) {
+    resMsg(res, 200, "failed", 
+      "Unauthorize user !!!"
+    );
+    return;
+  }
+  let getData = await dataModel.find({ _project: projectToken });
   if (getData.length > 0) {
     return res.status(200).json({
       status: "ok",
@@ -57,8 +77,25 @@ exports.getProjectToken = catchAsync(async(req, res, next) => {
   let userID = req.body.userID;
   let projectName = req.body.projectName;
   let domainURL = req.body.domainURL;
-
   res.setHeader('Content-type', 'application/json');
+  if (req.user === undefined || req.user.jwtToken === undefined) {
+    resMsg(res, 200, "failed", 
+      "You are not logged in! Please log in to get access!!!"
+    );
+    return;
+  }
+  // Verification token
+  let decoded = await promisify(jwt.verify)
+    (req.user.jwtToken, process.env.JWT_SECRET);
+  let currentUser = await authModel.findById(decoded.id);
+  let currentID = false;
+  if (currentUser) currentID = currentUser._id;
+  if (currentID === false || currentID != userID) {
+    resMsg(res, 200, "failed", 
+      "Unauthorize user !!!"
+    );
+    return;
+  }
   if (projectName === null || projectName === undefined || 
       projectName.length === 0) {
     return resMsg(res, 200, "failed", "Provide a valid project name");
@@ -98,32 +135,82 @@ exports.getProjectToken = catchAsync(async(req, res, next) => {
 
 exports.getProjectList = catchAsync(async(req, res, next) => {
   let userID = req.query.userID;
-  let data = await projectModel.find({ _usertoken: userID });
-  
   res.setHeader('Content-type', 'application/json');
+  if (req.user === undefined || req.user.jwtToken === undefined) {
+    resMsg(res, 200, "failed", 
+      "You are not logged in! Please log in to get access!!!"
+    );
+    return;
+  }
+  // Verification token
+  let decoded = await promisify(jwt.verify)
+    (req.user.jwtToken, process.env.JWT_SECRET);
+  let currentUser = await authModel.findById(decoded.id);
+  let currentID = false;
+  if (currentUser) currentID = currentUser._id;
+  if (currentID === false || currentID != userID) {
+    resMsg(res, 200, "failed", 
+      "Unauthorize user !!!"
+    );
+    return;
+  }
+  let data = await projectModel.find({ _usertoken: userID });
   if (data.length > 0) {
     resData(res, 200, "ok", data);
     return;
-  } else {
-    resMsg(res, 200, "ok", "Nothing found here!!!");
   }
 });
 
 exports.getProjectCount = catchAsync(async(req, res, next) => {
   let userID = req.query.userID;
+  res.setHeader('Content-type', 'application/json');
+  if (req.user === undefined || req.user.jwtToken === undefined) {
+    resMsg(res, 200, "failed", 
+      "You are not logged in! Please log in to get access!!!"
+    );
+    return;
+  }
+  // Verification token
+  let decoded = await promisify(jwt.verify)
+    (req.user.jwtToken, process.env.JWT_SECRET);
+  let currentUser = await authModel.findById(decoded.id);
+  let currentID = false;
+  if (currentUser) currentID = currentUser._id;
+  if (currentID === false || currentID != userID) {
+    resMsg(res, 200, "failed", 
+      "Unauthorize user !!!"
+    );
+    return;
+  }
   let data = await projectModel.find({ _usertoken: userID });
-  
   if (data) data = data.length;
   else data = 0;
-  res.setHeader('Content-type', 'application/json');
   resData(res, 200, "ok", data);
   return;
 });
 
 exports.getProjectDomain = catchAsync(async(req, res, next) => {
   let projectToken = req.query.projectToken;
-  let data = await projectModel.findOne({ _projecttoken: projectToken });
   res.setHeader('Content-type', 'application/json');
+  if (req.user === undefined || req.user.jwtToken === undefined) {
+    resMsg(res, 200, "failed", 
+      "You are not logged in! Please log in to get access!!!"
+    );
+    return;
+  }
+  // Verification token
+  let decoded = await promisify(jwt.verify)
+    (req.user.jwtToken, process.env.JWT_SECRET);
+  let currentUser = await authModel.findById(decoded.id), currentID;
+  if (!currentUser) currentID = false;
+  else currentID = currentUser._id;
+  if (currentID === false) {
+    resMsg( res, 200, "failed", 
+      "Unauthorize user !!!"
+    );
+    return;
+  }
+  let data = await projectModel.findOne({ _projecttoken: projectToken });
   resData(res, 200, "ok", data._userdomain);
   return;
 });
@@ -133,8 +220,25 @@ exports.updateURL = catchAsync(async(req, res, next) => {
   let newURL = req.body.newURL;
   let oldUrl = await projectModel.findOne({ _projecttoken: projectToken });
     oldUrl = oldUrl._userdomain;
-
   res.setHeader('Content-type', 'application/json');
+  if (req.user === undefined || req.user.jwtToken === undefined) {
+    resMsg(res, 200, "failed", 
+      "You are not logged in! Please log in to get access!!!"
+    );
+    return;
+  }
+  // Verification token
+  let decoded = await promisify(jwt.verify)
+    (req.user.jwtToken, process.env.JWT_SECRET);
+  let currentUser = await authModel.findById(decoded.id), currentID;
+  if (!currentUser) currentID = false;
+  else currentID = currentUser._id;
+  if (currentID === false) {
+    resMsg( res, 200, "failed", 
+      "Unauthorize user !!!"
+    );
+    return;
+  }
   if (oldUrl) {
     let projectCnt = await projectModel.find({ _projecttoken: projectToken });
       projectCnt = projectCnt.length;

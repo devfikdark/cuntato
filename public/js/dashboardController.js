@@ -6,7 +6,7 @@ $(function() {
 });
 
 function getUserProjects(userID) {
-  let url = "http://localhost:3000/api/get-project-list?userID=";
+  let url = "https://cuntato.herokuapp.com/api/get-project-list?userID=";
     url += userID;
   $.get(url, function() {})
     .done((res) => {
@@ -29,8 +29,8 @@ function getUserProjects(userID) {
         $("#projectList").html(str);
         copyToClipboard();
       }
-      $("main").show();
       $(".circle-loader").hide();
+      $("main").show();
     })
     .fail(() => {
       showToast("Problem Load projects!!!", "red darken-3");
@@ -42,8 +42,6 @@ function copyToClipboard() {
     let copyText = $('#copy' + this.id).text();
     let input = document.createElement('input');
     input.value = copyText;
-    console.log(this.id, copyText)
-
     document.body.appendChild(input);
     input.select();
     document.execCommand('copy');
@@ -56,12 +54,11 @@ function createProject(userID) {
   $("#createID").click(function() {
     let projectName = $("#projectName").val();
     let domainURL = $("#domainURL").val();
-    let url = "http://localhost:3000/api/get-project-token";
+    let url = "https://cuntato.herokuapp.com/api/get-project-token";
     $.post(url, 
         { userID: userID , projectName: projectName, domainURL: domainURL }, 
         function() {})
       .done((res) => {
-        console.log(res)
         if (res.status === "ok") {
           showToast("Project create success...", "green darken-3");
           getUserProjects(userID);
