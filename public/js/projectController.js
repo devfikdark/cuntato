@@ -1,6 +1,6 @@
 $(function() {
-  $("main").hide();
   let projectToken = $("span").attr("id");
+  $("main").hide();
   getProjectDomain(projectToken);
   setProjectRelatedCode(projectToken);
   getProjectData(projectToken);

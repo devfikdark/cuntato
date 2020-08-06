@@ -192,10 +192,6 @@ nav .brand-logo {
   margin-bottom: 4em;
 }
 
-.copy {
-  cursor: copy;
-}
-
 .tabs {
   margin-top: 1.5em;
   display: -webkit-box;
@@ -234,6 +230,10 @@ nav .brand-logo {
 /*Background and text color when a tab is active*/
 .tabs .indicator {
   background-color: #045c0c !important;
+}
+
+.copy {
+  cursor: copy;
 }
 
 .rounded {
