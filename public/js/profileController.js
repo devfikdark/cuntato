@@ -1,14 +1,1 @@
-$(function() {
-  let userID = $("span").attr("id");
-  getProjectCount(userID);
-});
-
-function getProjectCount(userID) {
-  let url = "http://localhost:3000/api/get-project-count?userID=";
-    url += userID;
-  $.get(url, function() {})
-    .done((res) => {
-      let str = res.data;
-      $("#projectCount").html(str);
-    })
-}
+function getProjectCount(t){let o="https://cuntato.herokuapp.com/api/get-project-count?userID=";o+=t,$.get(o,function(){}).done(t=>{let o=t.data;$("#projectCount").html(o)})}$(function(){getProjectCount($("span").attr("id"))});

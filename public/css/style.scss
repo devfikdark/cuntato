@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
 
@@ -14,7 +14,7 @@ html {
 body {
   background-color: $white-green;
   color: $black;
-  font-family: "Roboto";
+  font-family: 'Noto Sans JP', sans-serif;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
