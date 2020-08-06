@@ -23,6 +23,11 @@
     />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/loader.css" />
+    <style>
+      main{
+          display:none
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -49,20 +54,19 @@
           </div>
         </nav>
       </div>
+
+      <!-- PRELOADER  -->
+      <div class="circle-loader">
+        <div class="loader-container">
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+        </div>
+      </div>
     </header>
 
-    <!-- PRELOADER  -->
-
-    <div class="circle-loader">
-      <div class="loader-container">
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-      </div>
-    </div>
-
-    <main class="main-content">
+    <main>
       <div class="small-div"></div>
       <div class="container">
         <h4 class="white-text">Your projects</h4>
@@ -145,21 +149,21 @@
         </div>
       </div>
       <img src="./img/blbo2.svg" alt="blob1" class="blob" />
-    </main>
-
-    <footer class="page-footer">
-      <div class="footer-copyright">
-        <div class="container">
-          © 2020 Copyright TeamTigers, Made with ❤️
-          <a
-            class="grey-text text-lighten-4 right"
-            href="https://teamtigers.github.io"
-            target="_blank"
-            >TeamTigers</a
-          >
+    
+      <footer class="page-footer">
+        <div class="footer-copyright">
+          <div class="container">
+            © 2020 Copyright TeamTigers, Made with ❤️
+            <a
+              class="grey-text text-lighten-4 right"
+              href="https://teamtigers.github.io"
+              target="_blank"
+              >TeamTigers</a
+            >
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </main>
     <!-- jQuery cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Materialize js cdn -->

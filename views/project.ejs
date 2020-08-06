@@ -31,6 +31,11 @@
     />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/loader.css" />
+    <style>
+      main{
+          display:none
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -58,20 +63,19 @@
           </div>
         </nav>
       </div>
+
+      <!-- PRELOADER -->
+      <div class="circle-loader">
+        <div class="loader-container">
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+          <div class="ball"></div>
+        </div>
+      </div>
     </header>
 
-    <!-- PRELOADER -->
-
-    <div class="circle-loader">
-      <div class="loader-container">
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-      </div>
-    </div>
-
-    <main class="main-content">
+    <main>
       <span id=<%= user.projectToken %> ></span>
       <div class="fixed-action-btn">
         <a
@@ -225,22 +229,23 @@
           </div>
         </div>
       </div>
-    </main>
+    
 
-    <footer class="page-footer">
-      <div class="footer-copyright">
-        <div class="container">
-          © 2020 Copyright TeamTigers, Made with ❤️
-          <a
-            class="grey-text text-lighten-4 right"
-            href="https://teamtigers.github.io"
-            target="_blank"
-            >TeamTigers</a
-          >
+      <footer class="page-footer">
+        <div class="footer-copyright">
+          <div class="container">
+            © 2020 Copyright TeamTigers, Made with ❤️
+            <a
+              class="grey-text text-lighten-4 right"
+              href="https://teamtigers.github.io"
+              target="_blank"
+              >TeamTigers</a
+            >
+          </div>
         </div>
-      </div>
-    </footer>
-    <img src="./img/blob.svg" alt="blob" class="blob" />
+      </footer>
+      <img src="./img/blob.svg" alt="blob" class="blob" />
+    </main>
 
     <!-- jQuery cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

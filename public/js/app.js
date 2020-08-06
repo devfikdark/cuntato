@@ -10,6 +10,5 @@ $(function () {
 
   $(window).on("load", function () {
     $(".progress").hide();
-    $(".main-content").fadeIn();
   });
 });
