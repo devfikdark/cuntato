@@ -6,7 +6,7 @@ $(function() {
 });
 
 function getUserProjects(userID) {
-  let url = "https://cuntato.herokuapp.com/api/get-project-list?userID=";
+  let url = "http://localhost:3000/api/get-project-list?userID=";
     url += userID;
   $.get(url, function() {})
     .done((res) => {
@@ -33,7 +33,7 @@ function getUserProjects(userID) {
       $("main").show();
     })
     .fail(() => {
-      showToast("Problem Load projects!!!", "red darken-3");
+      showToast("Something broken while loading projects", "red darken-3");
     })  
 }
 
@@ -45,7 +45,7 @@ function copyToClipboard() {
     document.body.appendChild(input);
     input.select();
     document.execCommand('copy');
-    showToast("Copied " + copyText, "deep-purple darken-4");
+    showToast("Copied to clipboard ", "green darken-3");
     document.body.removeChild(input);
   });
 }
@@ -54,29 +54,29 @@ function createProject(userID) {
   $("#createID").click(function() {
     let projectName = $("#projectName").val();
     let domainURL = $("#domainURL").val();
-    let url = "https://cuntato.herokuapp.com/api/get-project-token";
+    let url = "http://localhost:3000/api/get-project-token";
     $.post(url, 
         { userID: userID , projectName: projectName, domainURL: domainURL }, 
         function() {})
       .done((res) => {
         if (res.status === "ok") {
-          showToast("Project create success...", "green darken-3");
+          showToast("Project created successfully", "green darken-3");
           getUserProjects(userID);
           $("#projectName").val("");
           $("#domainURL").val("");
           $('.modal').modal('close');
         } else if (res.message === "Provide a valid project name") {
-          showToast("Please, provide a valid project name", "cyan darken-3");
+          showToast("Project name is required", "yellow darken-3");
         }else if (res.message === "Provide a valid domain URL") {
-          showToast("Please, provide a valid domain URL", "cyan darken-3");
+          showToast("Domain name is required", "yellow darken-3");
         }else if (res.message === "update your plan") {
-          showToast("Update your plan", "cyan darken-3");
+          showToast("Permission denied", "yellow darken-3");
         } else if(res.message === "Already use this name") {
-          showToast("Already use this name", "red darken-3");
+          showToast("Name is already used", "red darken-3");
         }
       })
       .fail(() => {
-        showToast("Somthing want wrong!!!", "red darken-3");
+        showToast("Something went wrong", "red darken-3");
       })
   });
 }

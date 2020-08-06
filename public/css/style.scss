@@ -285,7 +285,7 @@ nav {
   width: 270px;
   position: absolute;
   right: 1%;
-  top: 2%;
+  top: 3.5%;
   z-index: -1;
 }
 #wave {
@@ -354,8 +354,13 @@ nav {
 //   right: 50.7%;
 // }
 code {
-  background-color: #c5c5c4;
+  background-color: #dddddd;
+  cursor: copy;
 }
+#code-copy-btn {
+  cursor: pointer;
+}
+
 .page-footer {
   background-color: $black;
 }

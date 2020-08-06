@@ -232,10 +232,6 @@ nav .brand-logo {
   background-color: #045c0c !important;
 }
 
-.copy {
-  cursor: copy;
-}
-
 .rounded {
   border-radius: 10px;
 }
@@ -307,7 +303,7 @@ nav .brand-logo {
   width: 270px;
   position: absolute;
   right: 1%;
-  top: 2%;
+  top: 3.5%;
   z-index: -1;
 }
 
@@ -370,7 +366,12 @@ nav .brand-logo {
 }
 
 code {
-  background-color: #c5c5c4;
+  background-color: #dddddd;
+  cursor: copy;
+}
+
+#code-copy-btn {
+  cursor: pointer;
 }
 
 .page-footer {
