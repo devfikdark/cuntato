@@ -7,7 +7,7 @@
       style-src  'self' 'unsafe-inline' *"
     >
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel='shortcut icon' type='image/x-icon' href='./img/favicon.ico' />
+    <link rel='shortcut icon' type='image/x-icon' href='./img/svg/cuntato.svg' />
     <title>Project | <%= user.projectName %></title>
     <link
       rel="stylesheet"
@@ -108,31 +108,29 @@
           </div>
 
           <div class="col s12" id="setup">
-            <form action="">
-              <div class="row">
-                <div class="input-field col s12 m8 l6">
-                  <input
-                    autocomplete="off"
-                    id="domain"
-                    type="text"
-                    pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"
-                    class="validate"
-                    validate
-                  />
-                  <span
-                    class="helper-text"
-                    data-error="Invalid url"
-                    data-success="Valid url"
-                    >Make sure to add valid url</span
-                  >
-                  <div class="row">
-                    <div class="col s12">
-                      <a href="#check" class="btn modal-trigger">Edit domain</a>
-                    </div>
+            <div class="row">
+              <div class="input-field col s12 m8 l6">
+                <input
+                  autocomplete="off"
+                  id="domain"
+                  type="text"
+                  pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"
+                  class="validate"
+                  validate
+                />
+                <span
+                  class="helper-text"
+                  data-error="Invalid url"
+                  data-success="Valid url"
+                  >Make sure to add valid url</span
+                >
+                <div class="row">
+                  <div class="col s12">
+                    <a href="#check" class="btn modal-trigger">Edit domain</a>
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
             <div class="row">
               <div class="col s12">
                 <ul class="collapsible rounded">

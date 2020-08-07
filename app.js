@@ -3,11 +3,29 @@ const passport = require('passport');
 const cors = require('cors')
 const app = express();
 const flash    = require('connect-flash');
+const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
 const session      = require('express-session');
 const bodyParser = require('body-parser');
 const appRouter = require('./router/appRouter');
 const authRouter = require('./router/authRouter');
+
+/******* Middlewares List ******/ 
+// Limit requests from same API
+let limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP, Please try again in an hour !!!'
+});
+app.use('/api', limiter);
+
+// Data sanitization against NoSQL query injections
+app.use(mongoSanitize());
+
+// Data sanitization against XSS
+app.use(xss());
 
 // handle headers
 app.use(cors());

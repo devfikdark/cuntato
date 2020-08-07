@@ -155,10 +155,7 @@ exports.getProjectList = catchAsync(async(req, res, next) => {
     return;
   }
   let data = await projectModel.find({ _usertoken: userID });
-  if (data.length > 0) {
-    resData(res, 200, "ok", data);
-    return;
-  }
+  resData(res, 200, "ok", data);
 });
 
 exports.getProjectCount = catchAsync(async(req, res, next) => {
