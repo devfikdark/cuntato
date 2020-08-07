@@ -44,6 +44,7 @@ nav {
     }
   }
   #avatar {
+    margin: .8rem 1rem;
     max-height: 40px;
     max-width: 40px;
   }
@@ -309,7 +310,7 @@ nav {
     box-shadow: -1px 3px 35px -16px rgba(4, 92, 12, 1);
   }
   .profile-info {
-    padding: 2rem;
+    padding-bottom: 1rem;
 
     h4,
     h5 {
