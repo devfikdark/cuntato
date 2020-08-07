@@ -46,7 +46,6 @@ nav {
   #avatar {
     max-height: 40px;
     max-width: 40px;
-    margin: 1rem 1rem;
   }
 
   .brand-logo {
@@ -80,21 +79,6 @@ nav {
   right: 0;
   background-color: $green;
   z-index: -1;
-}
-#home {
-  h1 {
-    margin-top: 20%;
-  }
-  .btn {
-    height: 3rem;
-    width: 12rem;
-    line-height: 3.4;
-
-    &:hover {
-      background-color: $green !important;
-      color: $white-green !important;
-    }
-  }
 }
 #dropdown1 {
   a {
