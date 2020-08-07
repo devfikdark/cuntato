@@ -32,4 +32,9 @@ require('./router/basicRouter')(app);
 app.use('/api', appRouter);
 app.use('/auth', authRouter);
 
+// error session
+app.get('*', function(req, res){
+  res.status(404).render('error');
+});
+
 module.exports = app;
