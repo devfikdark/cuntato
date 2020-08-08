@@ -14,7 +14,7 @@ let dataModelSchema = new mongoose.Schema({
       type: String,
       required: [true, "provide your message"]
     },
-    createAt: Date
+    createAt: String
   },
   _project: {
     type: String,
