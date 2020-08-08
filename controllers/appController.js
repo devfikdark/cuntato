@@ -42,7 +42,8 @@ exports.getFromData = catchAsync(async(req, res, next) => {
 exports.postFromData = catchAsync(async(req, res, next) => {
   let data = req.body.data;
     data = JSON.parse(data);
-    data.createAt = Date.now();
+  let nowTime = new Date();
+  data.createAt = nowTime.toLocaleString();
   let projectToken = req.body.projectID
   let currentURL = req.body.currentURL;
   let domainURL = await projectModel.findOne({ _projecttoken: projectToken });
