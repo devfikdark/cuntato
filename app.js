@@ -30,18 +30,40 @@ app.use(xss());
 // handle headers
 app.use(cors());
 
+// handle custom header
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+// auth via google, github, linkedin 
 require('./controllers/authController')(passport);
+
+// use cookie
 app.use(cookieParser()); 
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
+
 // parse application/json
 app.use(bodyParser.json());
+
+// access static files
 app.use(express.static('public'));
+
+// allow views
 app.set('view engine', 'ejs');
-app.use(session({ secret: 'morol' }));
+
+// allow session
+app.use(session({ secret: process.env.SESSION_SECRET }));
+
+// configure passport auth
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+app.use(passport.session()); 
+
+// session & cookie save through flash
 app.use(flash());
+
 // allow https
 app.enable('trust proxy'); 
 

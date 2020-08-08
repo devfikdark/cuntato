@@ -48,6 +48,7 @@ nav .btn:hover {
 }
 
 nav #avatar {
+  margin: .8rem 1rem;
   max-height: 40px;
   max-width: 40px;
 }
@@ -327,7 +328,7 @@ nav .brand-logo {
 }
 
 #profile .profile-info {
-  padding: 2rem;
+  padding-bottom: 1rem;
 }
 
 #profile .profile-info h4,

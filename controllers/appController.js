@@ -48,13 +48,11 @@ exports.postFromData = catchAsync(async(req, res, next) => {
   let domainURL = await projectModel.findOne({ _projecttoken: projectToken });
   
   res.setHeader('Content-type', 'application/json');
-  /*
   if (!domainURL) {
     resMsg(res, 200, "failed", "Project not found !!!");
     return
   }
-  let isTrue = isMatchURL(domainURL._userdomain, currentURL);*/
-  let isTrue = true; // testing purpose
+  let isTrue = isMatchURL(domainURL._userdomain, currentURL); 
   if (!isTrue) {
     resMsg(res, 200, "failed", "Unauthorize user!!!");
     return
@@ -67,7 +65,7 @@ exports.postFromData = catchAsync(async(req, res, next) => {
       await dataModel.create(newData);
       resMsg(res, 200, "ok", "create success");
       return;
-    }  
+    }
   }
   resMsg(res, 200, "failed", "Somthing problem here!!!");
 });
