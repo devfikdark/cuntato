@@ -55,9 +55,9 @@ _**N.B**: If you don't like jQuery you can use `axios` or any other medium to po
 
 ## Project Gif
 
-|              Gif               |
-| :----------------------------: |
-| ![gif](public/img/gif/gif.gif) |
+|              Gif               |              Message table               |
+| :----------------------------: | :--------------------------------------: |
+| ![gif](public/img/gif/gif.gif) | ![download](public/img/gif/download.gif) |
 
 ## Geeky Contributors
 
