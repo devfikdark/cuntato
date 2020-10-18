@@ -1,0 +1,33 @@
+  
+{
+    "name": "Cuntato",
+    "short_name": "Cuntato",
+    "lang": "en-US",
+    "start_url": "views/index.ejs",
+    "display": "standalone",
+    "theme_color": "#04949c",
+    "background_color": "#FFFFFF",
+    "icons": [
+        {
+          "src": "public/img/logo/cuntato128.png",
+          "sizes": "128x128"
+        },
+        {
+          "src": "public/img/logo/cuntato192.png",
+          "sizes": "192x192"
+        },
+        {
+          "src": "public/img/logo/cuntato256.png",
+          "sizes": "256x256"
+        },
+        {
+          "src": "public/img/logo/cuntato384.png",
+          "sizes": "384x384"
+        },
+        {
+          "src": "public/img/logo/cuntato512.png",
+          "sizes": "512x512",
+          "purpose": "any maskable"
+        }
+      ]
+}
