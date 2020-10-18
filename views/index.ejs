@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Primary Meta Tags -->
     <title>Cuntato</title>
-    <link rel="icon" href="./img/svg/cuntato.png" />
+    <meta rel="icon" content="https://imgur.com/y4mhZlj.png" />
     <meta property="og:image" content="https://imgur.com/y4mhZlj.png" />
     <meta name="title" content="Cuntato" />
     <meta name="description" content="An easy solution to get started with contact form in your websites" />
@@ -21,7 +21,7 @@
     <meta property="og:url" content="https://cuntato.herokuapp.com/" />
     <meta property="og:title" content="Cuntato" />
     <meta property="og:description" content="An easy solution to get started with contact form in your websites" />
-    <meta property="og:image" content="./img/svg/cuntato.png" />
+    <meta property="og:image" content="https://imgur.com/y4mhZlj.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="Website" />
@@ -29,7 +29,7 @@
     <meta property="twitter:title" content="Cuntato" />
     <meta property="twitter:description" content="An easy solution to get started with contact form in your websites" />
     <meta property="twitter:image" content="./img/svg/cuntato.svg" />
-    <link rel="shortcut icon" type="image/x-icon" href="./img/svg/cuntato.png" />
+    <meta property="og:image" content="https://imgur.com/y4mhZlj.png" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -40,7 +40,7 @@
 
     <!-- Manifest -->
     <!-- Manifest -->
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="../manifest.json" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Cuntato" />
@@ -220,7 +220,7 @@
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker
-            .register("service-worker.js")
+            .register("../service-worker.js")
             .then((reg) => {
               console.log("Service successfully registered", reg);
             })
