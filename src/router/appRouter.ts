@@ -8,7 +8,7 @@ const {
   getProjectCount,
   getProjectDomain,
   updateURL 
-} = require('./../controllers/appController');
+} = require('../../controllers/appController');
 
 /*** Get Request ***/
 route.get('/project-data', getFromData);

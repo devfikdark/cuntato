@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+import './importEnv';
+import * as mongoose from 'mongoose';
 
 // cloud connection-Str
-let cloudDB = process.env.DATABASE.replace(
+let cloudDB: string = process.env.DATABASE.replace(
   '<password>',
   process.env.DATABASE_PASSWORD
 );
 
-//mongoose.connect(process.env.DATABASE_LOCAL, {
 mongoose.connect(cloudDB, {
   useNewUrlParser: true,
   useCreateIndex: true,
