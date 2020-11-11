@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose';
 
-let authModelSchema = new mongoose.Schema({
+const authModelSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "provide a valid name"]
@@ -18,6 +18,8 @@ let authModelSchema = new mongoose.Schema({
   }
 });
 
-let authModel = mongoose.model('authData', authModelSchema);
+if (!mongoose.models.authData) {
+  mongoose.model('authData', authModelSchema);
+}
 
-module.exports = authModel;
+export default mongoose.models.authData;

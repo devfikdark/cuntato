@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const GithubStrategy = require('passport-github2').Strategy;
 const LinkedinStrategy = require('passport-linkedin-oauth2').Strategy;
-const authModel = require('./../model/authModel');
+const authModel = require('../../model/authModel');
 
 module.exports = (passport) => {
   // used to serialize the user for the session

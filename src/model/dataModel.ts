@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose';
 
-let dataModelSchema = new mongoose.Schema({
+const dataModelSchema = new mongoose.Schema({
   data: {
     name: {
       type: String,
@@ -22,6 +22,9 @@ let dataModelSchema = new mongoose.Schema({
   }
 });
 
-let dataModel = mongoose.model('fromData', dataModelSchema);
+if (!mongoose.models.fromData) {
+  mongoose.model('fromData', dataModelSchema);
+}
 
-module.exports = dataModel;
+const dataModel = mongoose.models.fromData;
+export default dataModel;

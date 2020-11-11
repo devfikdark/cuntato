@@ -1,25 +1,19 @@
-const express = require('express');
-const route = express.Router();
-const { 
-  getFromData,
-  postFromData,
-  getProjectToken,
-  getProjectList,
-  getProjectCount,
-  getProjectDomain,
-  updateURL 
-} = require('../../controllers/appController');
+import { appController } from '../controllers/appController';
 
-/*** Get Request ***/
-route.get('/project-data', getFromData);
-route.get('/get-project-count', getProjectCount);
-route.get('/get-project-list', getProjectList);
-route.get('/get-project-domain', getProjectDomain);
+export class appRouter {
+  public appController: appController = new appController();
+
+  public router(app): void {
+    /*** Get Request ***/
+    app.get('/project-data', this.appController.getFromData);
+    app.get('/get-project-count', this.appController.getProjectCount);
+    app.get('/get-project-list', this.appController.getProjectList);
+    app.get('/get-project-domain', this.appController.getProjectDomain);
 
 
-/*** Post Request ***/
-route.post('/project-data', postFromData);
-route.post('/get-project-token', getProjectToken);
-route.post('/update-domain-url', updateURL);
-
-module.exports = route;
+    /*** Post Request ***/
+    app.post('/project-data', this.appController.postFromData);
+    app.post('/get-project-token', this.appController.getProjectToken);
+    app.post('/update-domain-url', this.appController.updateURL);
+  }
+}
