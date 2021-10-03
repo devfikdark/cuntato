@@ -45,7 +45,7 @@ To keep things less complicated we used **Google**, **Github**, **Linked In** au
 
 #### Create Project
 
-After successful authentication you'll be redirected to your dashboard. If you are a first time user then you'll only see a `**Add Project**` button. After clicking that a modal will popup where you need to give name of your project. Project name doesn't need to be a valid name but it needs to be unique. Then you'll need to add **Domain URL** of your websites `e.g. https://personal-site.github.io`. Click on the **Create project** button and you'll see your project name in a card. You can't create more than three projects.
+After successful authentication you'll be redirected to your dashboard. If you are a first time user then you'll only see a **Add Project** button. After clicking that a modal will popup where you need to give name of your project. Project name doesn't need to be a valid name but it needs to be unique. Then you'll need to add **Domain URL** of your websites `e.g. https://personal-site.github.io`. Click on the **Create project** button and you'll see your project name in a card. You can't create more than three projects.
 
 #### Project
 
@@ -64,7 +64,7 @@ _**N.B**: If you don't like jQuery you can use `axios` or any other medium to po
 <table>
 <tr>
 <td align="center"><a href="https://zubayerhimel.github.io"><img src="https://avatars0.githubusercontent.com/u/29758443?v=4" width="100px;" alt=""/><br /><sub><b>Zubayer Himel</b></sub></a><br /><a href="#" title="Idea & Planning">🤔</a><a href="#" title="Design">🎨</a><a href="#" title="Documentation">📖</a></td>
-<td align="center"><a href="https://morol1957.blogspot.com"><img src="https://avatars0.githubusercontent.com/jinnatul" width="100px;" alt=""/><br /><sub><b>Jinnatul Islam</b></sub></a><br /><a href="#" title="Backend">⚙️</a><a href="#" title="Testing">🔨</a></td>
+<td align="center"><a href="https://jinnatul.github.io"><img src="https://avatars0.githubusercontent.com/jinnatul" width="100px;" alt=""/><br /><sub><b>Jinnatul Islam</b></sub></a><br /><a href="#" title="Backend">⚙️</a><a href="#" title="Testing">🔨</a></td>
 </tr>
 </table>
 
